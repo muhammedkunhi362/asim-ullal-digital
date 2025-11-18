@@ -40,12 +40,45 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="scholarly-bg py-20 lg:py-32 relative overflow-hidden">
+        {/* Background Design Elements */}
         <div className="absolute top-10 left-10 opacity-20">
           <DiacriticOrnament className="text-accent w-16 h-16" variant="curl" />
         </div>
         <div className="absolute bottom-10 right-10 opacity-20">
           <DiacriticOrnament className="text-primary w-20 h-20" variant="curl" />
         </div>
+        <div className="absolute top-1/4 right-20 opacity-10">
+          <Scale className="w-24 h-24 text-primary" />
+        </div>
+        <div className="absolute bottom-1/4 left-20 opacity-10">
+          <DiacriticOrnament className="text-accent w-12 h-12" variant="accent" />
+        </div>
+        <div className="absolute top-1/2 left-1/4 opacity-5">
+          <div className="w-32 h-32 rounded-full border-4 border-accent" />
+        </div>
+        <div className="absolute top-1/3 right-1/3 opacity-5">
+          <div className="w-24 h-24 rounded-full border-4 border-primary" />
+        </div>
+        {/* Decorative dots pattern */}
+        <div className="absolute top-16 right-1/4 flex gap-3 opacity-15">
+          <DiacriticOrnament className="text-accent" variant="dot" />
+          <DiacriticOrnament className="text-primary" variant="dot" />
+          <DiacriticOrnament className="text-accent" variant="dot" />
+        </div>
+        <div className="absolute bottom-20 left-1/3 flex gap-3 opacity-15">
+          <DiacriticOrnament className="text-primary" variant="dot" />
+          <DiacriticOrnament className="text-accent" variant="dot" />
+          <DiacriticOrnament className="text-primary" variant="dot" />
+        </div>
+        {/* Curved accent lines */}
+        <svg className="absolute top-0 right-0 w-64 h-64 opacity-5" viewBox="0 0 200 200">
+          <path d="M0,100 Q50,50 100,100 T200,100" stroke="hsl(var(--primary))" strokeWidth="2" fill="none" />
+          <path d="M0,120 Q50,70 100,120 T200,120" stroke="hsl(var(--accent))" strokeWidth="2" fill="none" />
+        </svg>
+        <svg className="absolute bottom-0 left-0 w-64 h-64 opacity-5" viewBox="0 0 200 200">
+          <path d="M0,100 Q50,150 100,100 T200,100" stroke="hsl(var(--accent))" strokeWidth="2" fill="none" />
+          <path d="M0,80 Q50,130 100,80 T200,80" stroke="hsl(var(--primary))" strokeWidth="2" fill="none" />
+        </svg>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
