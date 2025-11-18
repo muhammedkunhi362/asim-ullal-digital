@@ -63,7 +63,7 @@ const Index = () => {
             <h1 className="text-5xl lg:text-6xl font-serif font-bold mb-4">
               Adv. Asim Ullal
             </h1>
-            <div className="flex items-center justify-center gap-2 mb-6">
+            <div className="flex items-center justify-center gap-2 mb-1">
               <DiacriticOrnament className="text-accent" variant="dot" />
               <p className="text-xl text-muted-foreground">
                 Advocate | Legal & Business Consultant
