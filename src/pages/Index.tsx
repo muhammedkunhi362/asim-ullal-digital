@@ -7,6 +7,7 @@ import FAQ from "@/components/FAQ";
 import CurvedRibbon from "@/components/CurvedRibbon";
 import DiacriticOrnament from "@/components/DiacriticOrnament";
 import { Scale, Briefcase, FileText, Users, Shield, Building } from "lucide-react";
+import advocateProfile from "@/assets/advocate-profile.jpg";
 
 const Index = () => {
   const highlights = [
@@ -48,6 +49,17 @@ const Index = () => {
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
+            {/* Profile Photo */}
+            <div className="mb-8 flex justify-center">
+              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+                <img 
+                  src={advocateProfile} 
+                  alt="Adv. Asim Ullal - Advocate Profile" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+
             <h1 className="text-5xl lg:text-6xl font-serif font-bold mb-4">
               Adv. Asim Ullal
             </h1>
@@ -58,11 +70,8 @@ const Index = () => {
               </p>
               <DiacriticOrnament className="text-accent" variant="dot" />
             </div>
-            <p className="text-lg text-muted-foreground mb-2">
+            <p className="text-lg text-muted-foreground mb-10">
               Managing Director & Founder – iBizlaw
-            </p>
-            <p className="text-2xl font-serif italic text-primary mb-10">
-              Building lawful solutions for business, life, and society.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
