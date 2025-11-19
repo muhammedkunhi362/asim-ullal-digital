@@ -46,9 +46,9 @@ const IBizlaw = () => {
             <div className="text-center mb-12">
               <DiacriticOrnament className="text-primary w-8 h-8 mx-auto mb-4" variant="accent" />
               <h1 className="text-4xl lg:text-5xl font-serif font-bold mb-4">
-                <span className="text-brand-green">i</span>
-                <span className="text-brand-aqua">Biz</span>
-                <span className="text-brand-lime">law</span>
+                <span className="text-green-800">i</span>
+                <span className="text-green-800">Biz</span>
+                <span className="text-green-800">law</span>
               </h1>
               <p className="text-xl text-primary font-serif mb-2">
                 Business & Legal Consultancy
@@ -96,8 +96,8 @@ const IBizlaw = () => {
                   >
                     <CardHeader>
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-lg bg-brand-aqua/10 flex items-center justify-center flex-shrink-0">
-                          <service.icon className="w-6 h-6 text-brand-aqua" />
+                        <div className="w-12 h-12 rounded-lg bg-green-800/10 flex items-center justify-center flex-shrink-0">
+                          <service.icon className="w-6 h-6 text-green-800" />
                         </div>
                         <CardTitle className="text-lg font-serif">
                           {service.title}
