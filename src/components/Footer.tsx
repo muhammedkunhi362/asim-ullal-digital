@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
-import DiacriticOrnament from "./DiacriticOrnament";
+import { Linkedin, Instagram, Facebook, Twitter, Scale } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
@@ -21,18 +20,16 @@ const Footer = () => {
     <footer className="bg-secondary border-t border-border">
       <div className="container mx-auto px-4 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Wordmark & Tagline */}
+          {/* Logo & Name */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <DiacriticOrnament className="text-accent w-5 h-5" variant="curl" />
-              <div className="flex items-baseline gap-1 font-serif text-xl">
-                <span className="text-brand-lime font-semibold">Of</span>
-                <span className="text-brand-green font-bold">ArCr</span>
-                <span className="text-brand-aqua font-semibold">Ino</span>
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Scale className="w-6 h-6 text-primary" />
               </div>
+              <span className="text-xl font-serif font-bold">Adv. Asim Ullal</span>
             </div>
-            <p className="text-sm text-muted-foreground font-serif italic">
-              Building lawful solutions for business, life, and society.
+            <p className="text-sm text-muted-foreground">
+              Legal & Business Consultant
             </p>
           </div>
 
@@ -71,13 +68,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Decorative Divider */}
-        <div className="flex items-center gap-4 mb-6">
-          <DiacriticOrnament className="text-accent/50" variant="accent" />
-          <div className="flex-1 h-px bg-border" />
-          <DiacriticOrnament className="text-accent/50" variant="dot" />
-          <div className="flex-1 h-px bg-border" />
-          <DiacriticOrnament className="text-accent/50" variant="accent" />
+        {/* Divider */}
+        <div className="mb-6">
+          <div className="h-px bg-border" />
         </div>
 
         {/* Copyright */}

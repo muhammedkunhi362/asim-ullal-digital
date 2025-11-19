@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import DiacriticOrnament from "@/components/DiacriticOrnament";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { Home, Briefcase, FileText, Heart, Shield, Landmark } from "lucide-react";
 
 const PracticeAreas = () => {
@@ -42,75 +43,90 @@ const PracticeAreas = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      <main className="flex-1 scholarly-bg py-16">
+      <main className="flex-1 bg-background py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             {/* Page Title */}
-            <div className="text-center mb-12">
-              <DiacriticOrnament className="text-primary w-8 h-8 mx-auto mb-4" variant="accent" />
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
                 Practice Areas
               </h1>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Comprehensive legal services across diverse practice areas, tailored to meet your specific needs.
+                Comprehensive legal services across diverse practice areas
               </p>
-              <div className="flex items-center justify-center gap-3 mt-6">
-                <div className="h-px w-16 bg-accent" />
-                <DiacriticOrnament className="text-accent" variant="dot" />
-                <div className="h-px w-16 bg-accent" />
-              </div>
-            </div>
+            </motion.div>
 
-            {/* Practice Cards Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {practices.map((practice, index) => (
-                <Card 
-                  key={index}
-                  className="bg-background hover:shadow-xl hover:border-primary/40 transition-smooth group cursor-pointer"
-                >
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-smooth">
-                        <practice.icon className="w-6 h-6" />
-                      </div>
-                      <div className="flex-1">
-                        <CardTitle className="text-xl font-serif group-hover:text-primary transition-smooth">
-                          {practice.title}
-                        </CardTitle>
+            {/* Vertical Timeline */}
+            <div className="relative">
+              {/* Timeline Line */}
+              <div className="absolute left-[23px] top-0 bottom-0 w-[2px] bg-border" />
+
+              {/* Timeline Items */}
+              <div className="space-y-12">
+                {practices.map((practice, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="relative flex gap-8 group"
+                  >
+                    {/* Timeline Icon */}
+                    <div className="relative z-10 flex-shrink-0">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 border-2 border-background flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <practice.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
                       </div>
                     </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {practice.description}
-                    </p>
-                    <DiacriticOrnament className="text-accent/50 mt-4" variant="dot" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
 
-            {/* Call to Action */}
-            <div className="mt-16 text-center bg-background p-8 rounded-lg border border-accent/30">
-              <DiacriticOrnament className="text-primary w-6 h-6 mx-auto mb-4" variant="curl" />
-              <p className="text-lg font-serif mb-6">
-                Need legal assistance in any of these areas?
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="/book-consultation" 
-                  className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-smooth"
-                >
-                  Book a Consultation
-                </a>
-                <a 
-                  href="/ask-question" 
-                  className="inline-flex items-center justify-center rounded-md border border-primary px-6 py-3 text-sm font-medium text-primary hover:bg-primary/5 transition-smooth"
-                >
-                  Ask a Free Question
-                </a>
+                    {/* Content Card */}
+                    <motion.div 
+                      whileHover={{ x: 10 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="flex-1 pb-4"
+                    >
+                      <div className="bg-secondary/50 backdrop-blur-sm rounded-lg p-6 border border-border hover:border-primary/30 hover:shadow-lg transition-all duration-300">
+                        <h3 className="text-xl font-serif font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                          {practice.title}
+                        </h3>
+                        <p className="text-muted-foreground leading-relaxed">
+                          {practice.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                ))}
               </div>
             </div>
+
+            {/* CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-20 text-center bg-secondary/30 rounded-lg p-10 border border-border"
+            >
+              <h2 className="text-2xl font-serif font-bold mb-4">
+                Need Legal Assistance?
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+                Get expert guidance tailored to your specific legal needs
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+                  <Link to="/book-consultation">Book a Consultation</Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link to="/ask-question">Ask a Free Question</Link>
+                </Button>
+              </div>
+            </motion.div>
           </div>
         </div>
       </main>

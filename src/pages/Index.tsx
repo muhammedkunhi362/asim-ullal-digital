@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
@@ -8,6 +9,7 @@ import CurvedRibbon from "@/components/CurvedRibbon";
 import DiacriticOrnament from "@/components/DiacriticOrnament";
 import { Scale, Briefcase, FileText, Users, Shield, Building } from "lucide-react";
 import advocateProfile from "@/assets/advocate-profile.jpg";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Index = () => {
   const highlights = [
@@ -33,6 +35,16 @@ const Index = () => {
       author: "Individual Client",
     },
   ];
+
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 2000);
+
+    return () => clearInterval(timer);
+  }, [testimonials.length]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -154,24 +166,52 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="scholarly-bg py-16">
+      <section className="bg-secondary py-16">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-primary mb-2">
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-foreground mb-2">
               Client Testimonials
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <Card key={index} className="bg-background border-accent/30">
-                <CardContent className="pt-6">
-                  <DiacriticOrnament className="text-accent mb-4" variant="curl" />
-                  <p className="font-serif italic text-lg mb-4">"{testimonial.quote}"</p>
-                  <p className="text-sm text-muted-foreground">— {testimonial.author}</p>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-2xl mx-auto">
+            <div className="relative h-48 flex items-center justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTestimonial}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <div className="bg-background/50 backdrop-blur-sm rounded-lg p-8 border border-border shadow-lg max-w-xl w-full">
+                    <p className="font-serif italic text-lg mb-4 text-foreground text-center">
+                      "{testimonials[currentTestimonial].quote}"
+                    </p>
+                    <p className="text-sm text-muted-foreground text-center">
+                      — {testimonials[currentTestimonial].author}
+                    </p>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    index === currentTestimonial
+                      ? "bg-primary w-8"
+                      : "bg-border hover:bg-primary/50"
+                  }`}
+                  aria-label={`Go to testimonial ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
