@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { NavLink } from "@/components/NavLink";
-import DiacriticOrnament from "./DiacriticOrnament";
-import { Menu } from "lucide-react";
+import { Menu, Scale } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
@@ -35,14 +34,12 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo with brand colors */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <DiacriticOrnament className="text-accent w-4 h-4 transition-smooth group-hover:scale-110" />
-            <div className="flex items-baseline gap-1 font-serif text-lg">
-              <span className="text-brand-lime font-semibold">Of</span>
-              <span className="text-brand-green font-bold">ArCr</span>
-              <span className="text-brand-aqua font-semibold">Ino</span>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-smooth">
+              <Scale className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-smooth" />
             </div>
+            <span className="text-xl font-serif font-bold text-foreground">Adv. Asim Ullal</span>
           </Link>
 
           {/* Desktop Navigation */}
