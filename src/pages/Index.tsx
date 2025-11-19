@@ -145,34 +145,42 @@ const Index = () => {
 
           {/* Vertical Timeline */}
           <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border" />
+            {/* Center Timeline Line */}
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-border" />
 
-            <div className="space-y-8">
-              {highlights.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  className="relative flex items-center gap-6 group"
-                >
-                  {/* Timeline Node */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div className="w-16 h-16 rounded-full bg-background border-2 border-primary flex items-center justify-center group-hover:scale-110 group-hover:border-primary/80 transition-all duration-300">
-                      <item.icon className="w-7 h-7 text-primary" />
+            <div className="space-y-12">
+              {highlights.map((item, index) => {
+                const isLeft = index % 2 === 0;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="relative"
+                  >
+                    <div className={`flex items-center gap-6 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
+                      {/* Content */}
+                      <div className={`flex-1 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'} group`}>
+                        <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+                          {item.label}
+                        </h3>
+                      </div>
+
+                      {/* Timeline Node */}
+                      <div className="relative z-10 flex-shrink-0">
+                        <div className="w-16 h-16 rounded-full bg-background border-2 border-primary flex items-center justify-center hover:scale-110 hover:border-primary/80 transition-all duration-300">
+                          <item.icon className="w-7 h-7 text-primary" />
+                        </div>
+                      </div>
+
+                      {/* Empty space for balance */}
+                      <div className="flex-1" />
                     </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 py-2">
-                    <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-300">
-                      {item.label}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
