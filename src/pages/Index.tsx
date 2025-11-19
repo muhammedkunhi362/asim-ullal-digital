@@ -135,30 +135,49 @@ const Index = () => {
 
       {/* Practice Highlights */}
       <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
+        <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+          <div className="text-center mb-16">
             <DiacriticOrnament className="text-primary w-8 h-8 mx-auto mb-4" variant="accent" />
             <h2 className="text-3xl lg:text-4xl font-serif font-bold text-primary mb-2">
               Areas of Practice
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {highlights.map((item, index) => (
-              <Card 
-                key={index} 
-                className="text-center hover:shadow-lg transition-smooth cursor-pointer hover:border-primary/30"
-              >
-                <CardContent className="pt-6 pb-6">
-                  <item.icon className="w-10 h-10 mx-auto mb-3 text-primary" />
-                  <p className="text-sm font-medium">{item.label}</p>
-                </CardContent>
-              </Card>
-            ))}
+          {/* Vertical Timeline */}
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="absolute left-8 top-0 bottom-0 w-px bg-border" />
+
+            <div className="space-y-8">
+              {highlights.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="relative flex items-center gap-6 group"
+                >
+                  {/* Timeline Node */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="w-16 h-16 rounded-full bg-background border-2 border-primary flex items-center justify-center group-hover:scale-110 group-hover:border-primary/80 transition-all duration-300">
+                      <item.icon className="w-7 h-7 text-primary" />
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 py-2">
+                    <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-300">
+                      {item.label}
+                    </h3>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
-          <div className="text-center mt-8">
-            <Button asChild variant="outline" className="border-primary text-primary">
+          <div className="text-center mt-12">
+            <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Link to="/practice-areas">View All Practice Areas</Link>
             </Button>
           </div>
