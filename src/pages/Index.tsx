@@ -51,52 +51,12 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="scholarly-bg py-20 lg:py-32 relative overflow-hidden">
-        {/* Background Design Elements */}
-        <div className="absolute top-10 left-10 opacity-20">
-          <DiacriticOrnament className="text-accent w-16 h-16" variant="curl" />
-        </div>
-        <div className="absolute bottom-10 right-10 opacity-20">
-          <DiacriticOrnament className="text-primary w-20 h-20" variant="curl" />
-        </div>
-        <div className="absolute top-1/4 right-20 opacity-10">
-          <Scale className="w-24 h-24 text-primary" />
-        </div>
-        <div className="absolute bottom-1/4 left-20 opacity-10">
-          <DiacriticOrnament className="text-accent w-12 h-12" variant="accent" />
-        </div>
-        <div className="absolute top-1/2 left-1/4 opacity-5">
-          <div className="w-32 h-32 rounded-full border-4 border-accent" />
-        </div>
-        <div className="absolute top-1/3 right-1/3 opacity-5">
-          <div className="w-24 h-24 rounded-full border-4 border-primary" />
-        </div>
-        {/* Decorative dots pattern */}
-        <div className="absolute top-16 right-1/4 flex gap-3 opacity-15">
-          <DiacriticOrnament className="text-accent" variant="dot" />
-          <DiacriticOrnament className="text-primary" variant="dot" />
-          <DiacriticOrnament className="text-accent" variant="dot" />
-        </div>
-        <div className="absolute bottom-20 left-1/3 flex gap-3 opacity-15">
-          <DiacriticOrnament className="text-primary" variant="dot" />
-          <DiacriticOrnament className="text-accent" variant="dot" />
-          <DiacriticOrnament className="text-primary" variant="dot" />
-        </div>
-        {/* Curved accent lines */}
-        <svg className="absolute top-0 right-0 w-64 h-64 opacity-5" viewBox="0 0 200 200">
-          <path d="M0,100 Q50,50 100,100 T200,100" stroke="hsl(var(--primary))" strokeWidth="2" fill="none" />
-          <path d="M0,120 Q50,70 100,120 T200,120" stroke="hsl(var(--accent))" strokeWidth="2" fill="none" />
-        </svg>
-        <svg className="absolute bottom-0 left-0 w-64 h-64 opacity-5" viewBox="0 0 200 200">
-          <path d="M0,100 Q50,150 100,100 T200,100" stroke="hsl(var(--accent))" strokeWidth="2" fill="none" />
-          <path d="M0,80 Q50,130 100,80 T200,80" stroke="hsl(var(--primary))" strokeWidth="2" fill="none" />
-        </svg>
-
-        <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <section className="scholarly-bg py-20 lg:py-32 relative">
+        <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             {/* Profile Photo */}
             <div className="mb-8 flex justify-center">
-              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-accent/30 shadow-xl">
+              <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-border shadow-[0_1px_3px_0_rgb(0_0_0_0.1)]">
                 <img 
                   src={advocateProfile} 
                   alt="Adv. Asim Ullal - Advocate Profile" 
@@ -105,50 +65,44 @@ const Index = () => {
               </div>
             </div>
 
-            <h1 className="text-5xl lg:text-6xl font-serif font-bold mb-4">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-3 text-foreground">
               Adv. Asim Ullal
             </h1>
-            <div className="flex items-center justify-center gap-2 mb-1">
-              <DiacriticOrnament className="text-accent" variant="dot" />
-              <p className="text-xl text-muted-foreground">
-                Advocate | Legal & Business Consultant
-              </p>
-              <DiacriticOrnament className="text-accent" variant="dot" />
-            </div>
-            <p className="text-lg text-muted-foreground mb-10">
+            <p className="text-lg text-muted-foreground mb-2">
+              Advocate | Legal & Business Consultant
+            </p>
+            <p className="text-base text-muted-foreground mb-10">
               Managing Director & Founder – iBizlaw
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 shadow-[0_1px_2px_0_rgb(0_0_0_0.05)]">
                 <Link to="/book-consultation">Book a Consultation</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
+              <Button asChild size="lg" variant="outline" className="border-border hover:bg-secondary">
                 <Link to="/ask-question">Ask a Free Question</Link>
               </Button>
             </div>
           </div>
         </div>
-
-        <CurvedRibbon className="absolute bottom-0 left-0 right-0" />
       </section>
 
       {/* Practice Highlights */}
-      <section className="py-16 bg-background">
+      <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
           <div className="text-center mb-16">
-            <DiacriticOrnament className="text-primary w-8 h-8 mx-auto mb-4" variant="accent" />
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-primary mb-2">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
               Areas of Practice
             </h2>
+            <div className="w-12 h-1 bg-primary mx-auto rounded-full"></div>
           </div>
 
           {/* Vertical Timeline */}
           <div className="relative">
             {/* Center Timeline Line */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-border" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-border" />
 
-            <div className="space-y-12">
+            <div className="space-y-8">
               {highlights.map((item, index) => {
                 const isLeft = index % 2 === 0;
                 return (
@@ -162,16 +116,18 @@ const Index = () => {
                   >
                     <div className={`flex items-center gap-6 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
                       {/* Content */}
-                      <div className={`flex-1 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'} group`}>
-                        <h3 className="text-lg font-medium text-foreground group-hover:text-primary transition-colors duration-300">
-                          {item.label}
-                        </h3>
+                      <div className={`flex-1 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'}`}>
+                        <div className={`inline-block px-5 py-3 rounded-lg bg-card border border-border/50 shadow-[0_1px_2px_0_rgb(0_0_0_0.05)] hover:shadow-[0_1px_3px_0_rgb(0_0_0_0.1)] transition-all duration-300`}>
+                          <h3 className="text-base font-medium text-foreground">
+                            {item.label}
+                          </h3>
+                        </div>
                       </div>
 
                       {/* Timeline Node */}
                       <div className="relative z-10 flex-shrink-0">
-                        <div className="w-16 h-16 rounded-full bg-background border-2 border-primary flex items-center justify-center hover:scale-110 hover:border-primary/80 transition-all duration-300">
-                          <item.icon className="w-7 h-7 text-primary" />
+                        <div className="w-12 h-12 rounded-full bg-primary/5 border-2 border-primary flex items-center justify-center hover:bg-primary hover:scale-110 transition-all duration-300 group">
+                          <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
                         </div>
                       </div>
 
@@ -185,7 +141,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+            <Button asChild variant="outline" className="border-border hover:bg-secondary">
               <Link to="/practice-areas">View All Practice Areas</Link>
             </Button>
           </div>
@@ -193,12 +149,13 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="bg-secondary py-16">
+      <section className="bg-background py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-foreground mb-2">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
               Client Testimonials
             </h2>
+            <div className="w-12 h-1 bg-primary mx-auto rounded-full"></div>
           </div>
 
           <div className="max-w-2xl mx-auto">
@@ -212,11 +169,11 @@ const Index = () => {
                   transition={{ duration: 0.5 }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="bg-background/50 backdrop-blur-sm rounded-lg p-8 border border-border shadow-lg max-w-xl w-full">
-                    <p className="font-serif italic text-lg mb-4 text-foreground text-center">
+                  <div className="bg-card rounded-xl p-8 border border-border/50 shadow-[0_1px_3px_0_rgb(0_0_0_0.1)] max-w-xl w-full">
+                    <p className="text-lg mb-4 text-foreground text-center leading-relaxed">
                       "{testimonials[currentTestimonial].quote}"
                     </p>
-                    <p className="text-sm text-muted-foreground text-center">
+                    <p className="text-sm text-muted-foreground text-center font-medium">
                       — {testimonials[currentTestimonial].author}
                     </p>
                   </div>
