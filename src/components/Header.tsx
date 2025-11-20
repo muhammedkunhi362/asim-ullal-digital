@@ -100,7 +100,7 @@ const Header = () => {
               <div className="flex items-center mb-8">
                 <Logo className="text-primary" />
               </div>
-              <nav className="flex flex-col gap-1">
+              <nav className="flex flex-col gap-3">
                 <NavLinks mobile />
               </nav>
             </SheetContent>
