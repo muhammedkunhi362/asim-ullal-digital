@@ -68,7 +68,7 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="mb-8 flex justify-center"
               >
-                <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-border shadow-[0_1px_3px_0_rgb(0_0_0_0.1)]">
+                <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-black shadow-[0_1px_3px_0_rgb(0_0_0_0.1)]">
                   <img 
                     src={advocateProfile} 
                     alt="Adv. Asim Ullal - Advocate Profile" 
