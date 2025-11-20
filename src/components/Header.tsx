@@ -11,10 +11,19 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 10);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -51,11 +60,8 @@ const Header = () => {
   );
 
   return (
-    <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.4 }}
-      className={`sticky top-0 z-50 w-full bg-background/95 backdrop-blur-md border-b border-border/50 transition-all duration-300 ${
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 w-full bg-background/95 backdrop-blur-md border-b border-border/50 transition-shadow duration-300 ${
         isScrolled ? 'shadow-lg' : ''
       }`}
     >
@@ -95,7 +101,7 @@ const Header = () => {
           </Sheet>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 };
 
