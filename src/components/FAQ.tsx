@@ -1,6 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import DiacriticOrnament from "./DiacriticOrnament";
-import { ChevronDown } from "lucide-react";
+import { motion } from "framer-motion";
+import { HelpCircle } from "lucide-react";
 
 const FAQ = () => {
   const faqs = [
@@ -23,37 +23,52 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-20 bg-secondary/30">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <DiacriticOrnament className="text-primary w-8 h-8 mx-auto mb-4" variant="accent" />
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-foreground mb-2">
+        <div className="max-w-4xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
               Frequently Asked Questions
             </h2>
-            <div className="flex items-center justify-center gap-3 mt-4">
-              <div className="h-px w-16 bg-accent" />
-              <DiacriticOrnament className="text-accent" variant="dot" />
-              <div className="h-px w-16 bg-accent" />
-            </div>
-          </div>
+            <div className="w-12 h-1 bg-primary mx-auto rounded-full"></div>
+          </motion.div>
 
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem 
-                key={index} 
-                value={`item-${index}`}
-                className="bg-secondary/50 backdrop-blur-sm border border-border rounded-lg overflow-hidden hover:border-primary/30 hover:shadow-lg transition-all duration-300 group"
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <AccordionTrigger className="text-left hover:text-primary font-serif font-bold text-lg px-6 py-5 hover:no-underline">
-                  <span className="flex-1 pr-4 group-hover:text-primary transition-colors">
-                    {faq.question}
-                  </span>
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed px-6 pb-5 pt-0">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+                <AccordionItem 
+                  value={`item-${index}`}
+                  className="bg-card border-0 rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300 group"
+                >
+                  <AccordionTrigger className="text-left hover:no-underline px-6 py-5 hover:bg-primary/5 transition-colors">
+                    <div className="flex items-start gap-4 flex-1 pr-4">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <HelpCircle className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
+                      </div>
+                      <span className="text-base font-semibold text-foreground group-hover:text-primary transition-colors pt-1.5">
+                        {faq.question}
+                      </span>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground leading-relaxed px-6 pb-6 pt-0 pl-20">
+                    <div className="border-l-2 border-primary/20 pl-6">
+                      {faq.answer}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </motion.div>
             ))}
           </Accordion>
         </div>
