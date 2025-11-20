@@ -18,8 +18,8 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 20%;
 
-    /* Primary: Deep Slate Blue */
-    --primary: 215 25% 27%;
+    /* Primary: Dark Green Navy */
+    --primary: 170 60% 25%;
     --primary-foreground: 0 0% 98%;
 
     /* Secondary: Subtle Grey */
@@ -43,9 +43,9 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     /* Brand Wordmark Colors */
-    --brand-lime: 215 25% 27%;
-    --brand-green: 215 25% 27%;
-    --brand-aqua: 215 25% 27%;
+    --brand-lime: 170 60% 25%;
+    --brand-green: 170 60% 25%;
+    --brand-aqua: 170 60% 25%;
 
     /* Transition & Animation */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
