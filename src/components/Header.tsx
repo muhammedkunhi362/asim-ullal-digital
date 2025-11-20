@@ -64,11 +64,17 @@ const Header = () => {
       className={`fixed top-0 left-0 right-0 z-50 w-full bg-background/95 backdrop-blur-md border-b border-border/50 transition-shadow duration-300 ${
         isScrolled ? 'shadow-lg' : ''
       }`}
+      style={{ 
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
+        transform: 'translateZ(0)',
+        willChange: 'auto'
+      }}
     >
-      <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+      <div className="w-full px-4 lg:px-8">
+        <div className="flex h-16 items-center justify-between max-w-7xl mx-auto">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group flex-shrink-0">
             <motion.div 
               whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ type: "spring", stiffness: 400 }}
@@ -86,7 +92,7 @@ const Header = () => {
           {/* Mobile Navigation */}
           <Sheet>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" className="hover:bg-primary/5">
+              <Button variant="ghost" size="icon" className="hover:bg-primary/5 flex-shrink-0">
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
