@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { NavLink } from "@/components/NavLink";
 import { Menu } from "lucide-react";
 import { Button } from "./ui/button";
@@ -7,6 +8,16 @@ import Logo from "@/components/Logo";
 import { motion } from "framer-motion";
 
 const Header = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navItems = [
     { to: "/", label: "Home" },
     { to: "/about", label: "About" },
@@ -44,7 +55,9 @@ const Header = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
-      className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-border/50"
+      className={`sticky top-0 z-50 w-full bg-background/95 backdrop-blur-md border-b border-border/50 transition-all duration-300 ${
+        isScrolled ? 'shadow-lg' : ''
+      }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex h-16 items-center justify-between">
