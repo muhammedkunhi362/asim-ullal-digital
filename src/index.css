@@ -115,9 +115,25 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+    width: 100%;
+    /* Better scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+    width: 100%;
+    /* Fix for mobile webkit */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevent bounce scrolling on iOS */
+    overscroll-behavior-y: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -134,5 +150,30 @@ All colors MUST be HSL.
   /* Smooth transitions */
   .transition-smooth {
     transition: var(--transition-smooth);
+  }
+}
+
+/* Mobile-specific fixes */
+@media (max-width: 1024px) {
+  body {
+    /* Prevent rubber band effect on mobile */
+    overscroll-behavior: none;
+  }
+
+  /* Fix for fixed elements on mobile */
+  .fixed {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* Fix scrolling issues on iOS */
+    height: 100%;
+    overflow: auto;
   }
 }
