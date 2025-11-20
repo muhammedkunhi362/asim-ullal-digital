@@ -51,11 +51,21 @@ const Index = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="scholarly-bg py-20 lg:py-32 relative">
+      <motion.section 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="scholarly-bg py-20 lg:py-32 relative"
+      >
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             {/* Profile Photo */}
-            <div className="mb-8 flex justify-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-8 flex justify-center"
+            >
               <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-border shadow-[0_1px_3px_0_rgb(0_0_0_0.1)]">
                 <img 
                   src={advocateProfile} 
@@ -63,39 +73,65 @@ const Index = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl lg:text-5xl font-bold mb-3 text-foreground">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-4xl lg:text-5xl font-bold mb-3 text-foreground"
+            >
               Adv. Asim Ullal
-            </h1>
-            <p className="text-lg text-muted-foreground mb-2">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-lg text-muted-foreground mb-2"
+            >
               Advocate | Legal & Business Consultant
-            </p>
-            <p className="text-base text-muted-foreground mb-10">
+            </motion.p>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="text-base text-muted-foreground mb-10"
+            >
               Managing Director & Founder – iBizlaw
-            </p>
+            </motion.p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-3 justify-center"
+            >
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 shadow-[0_1px_2px_0_rgb(0_0_0_0.05)]">
                 <Link to="/book-consultation">Book a Consultation</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-border hover:bg-secondary">
                 <Link to="/ask-question">Ask a Free Question</Link>
               </Button>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Practice Highlights */}
       <section className="py-20 bg-secondary/30">
         <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
-          <div className="text-center mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
               Areas of Practice
             </h2>
             <div className="w-12 h-1 bg-primary mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
 
           {/* Vertical Timeline */}
           <div className="relative">
@@ -117,11 +153,9 @@ const Index = () => {
                     <div className={`flex items-center gap-6 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
                       {/* Content */}
                       <div className={`flex-1 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                        <div className={`inline-block px-5 py-3 rounded-lg bg-card border border-border/50 shadow-[0_1px_2px_0_rgb(0_0_0_0.05)] hover:shadow-[0_1px_3px_0_rgb(0_0_0_0.1)] transition-all duration-300`}>
-                          <h3 className="text-base font-medium text-foreground">
-                            {item.label}
-                          </h3>
-                        </div>
+                        <h3 className="text-base font-medium text-foreground hover:text-primary transition-colors duration-300">
+                          {item.label}
+                        </h3>
                       </div>
 
                       {/* Timeline Node */}
@@ -151,12 +185,18 @@ const Index = () => {
       {/* Testimonials */}
       <section className="bg-background py-20">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
               Client Testimonials
             </h2>
             <div className="w-12 h-1 bg-primary mx-auto rounded-full"></div>
-          </div>
+          </motion.div>
 
           <div className="max-w-2xl mx-auto">
             <div className="relative h-48 flex items-center justify-center">
@@ -169,13 +209,22 @@ const Index = () => {
                   transition={{ duration: 0.5 }}
                   className="absolute inset-0 flex items-center justify-center"
                 >
-                  <div className="bg-card rounded-xl p-8 border border-border/50 shadow-[0_1px_3px_0_rgb(0_0_0_0.1)] max-w-xl w-full">
-                    <p className="text-lg mb-4 text-foreground text-center leading-relaxed">
-                      "{testimonials[currentTestimonial].quote}"
+                  <div className="relative bg-gradient-to-br from-card to-secondary/20 rounded-2xl p-10 border border-border/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] max-w-xl w-full backdrop-blur-sm">
+                    <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                      <svg className="w-6 h-6 text-primary-foreground" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                      </svg>
+                    </div>
+                    <p className="text-lg mb-6 text-foreground text-center leading-relaxed pt-4">
+                      {testimonials[currentTestimonial].quote}
                     </p>
-                    <p className="text-sm text-muted-foreground text-center font-medium">
-                      — {testimonials[currentTestimonial].author}
-                    </p>
+                    <div className="flex items-center justify-center gap-3">
+                      <div className="h-px w-8 bg-primary/30"></div>
+                      <p className="text-sm text-muted-foreground font-medium">
+                        {testimonials[currentTestimonial].author}
+                      </p>
+                      <div className="h-px w-8 bg-primary/30"></div>
+                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
