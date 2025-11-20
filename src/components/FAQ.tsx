@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import DiacriticOrnament from "./DiacriticOrnament";
+import { ChevronDown } from "lucide-react";
 
 const FAQ = () => {
   const faqs = [
@@ -27,7 +28,7 @@ const FAQ = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <DiacriticOrnament className="text-primary w-8 h-8 mx-auto mb-4" variant="accent" />
-            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-primary mb-2">
+            <h2 className="text-3xl lg:text-4xl font-serif font-bold text-foreground mb-2">
               Frequently Asked Questions
             </h2>
             <div className="flex items-center justify-center gap-3 mt-4">
@@ -42,12 +43,14 @@ const FAQ = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-secondary border border-border rounded-lg px-6"
+                className="bg-secondary/50 backdrop-blur-sm border border-border rounded-lg overflow-hidden hover:border-primary/30 hover:shadow-lg transition-all duration-300 group"
               >
-                <AccordionTrigger className="text-left hover:text-primary font-medium">
-                  {faq.question}
+                <AccordionTrigger className="text-left hover:text-primary font-serif font-bold text-lg px-6 py-5 hover:no-underline">
+                  <span className="flex-1 pr-4 group-hover:text-primary transition-colors">
+                    {faq.question}
+                  </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground leading-relaxed">
+                <AccordionContent className="text-muted-foreground leading-relaxed px-6 pb-5 pt-0">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
