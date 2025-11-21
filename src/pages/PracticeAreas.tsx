@@ -121,7 +121,7 @@ const PracticeAreas = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                   <a 
-                    href="https://wa.me/918147240545?text=Hello%2C%20I%20would%20like%20to%20book%20a%20legal%20consultation%20with%20you.%20Could%20you%20please%20provide%20me%20with%20available%20time%20slots%3F"
+                    href="https://wa.me/+918147240545"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
