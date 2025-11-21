@@ -1,6 +1,6 @@
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import DiacriticOrnament from "@/components/DiacriticOrnament";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,13 +13,17 @@ const AskQuestion = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      <main className="flex-1 scholarly-bg py-16">
+      <main className="flex-1 bg-background py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-3xl mx-auto">
             {/* Page Title */}
-            <div className="text-center mb-12">
-              <DiacriticOrnament className="text-primary w-8 h-8 mx-auto mb-4" variant="accent" />
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 Ask a Free Question
               </h1>
               <p className="text-lg text-muted-foreground">
@@ -28,16 +32,17 @@ const AskQuestion = () => {
               <p className="text-sm text-muted-foreground italic mt-2">
                 I will respond with basic guidance within 24–48 hours.
               </p>
-              <div className="flex items-center justify-center gap-3 mt-6">
-                <div className="h-px w-16 bg-accent" />
-                <DiacriticOrnament className="text-accent" variant="dot" />
-                <div className="h-px w-16 bg-accent" />
-              </div>
-            </div>
+            </motion.div>
 
             {/* Form Card */}
-            <Card className="bg-background border-accent/30">
-              <CardContent className="pt-8 pb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="bg-card border-border/50">
+                <CardContent className="pt-8 pb-8">
                 <form className="space-y-6">
                   {/* Full Name */}
                   <div>
@@ -149,12 +154,6 @@ const AskQuestion = () => {
                     </p>
                   </div>
 
-                  {/* Ornament Divider */}
-                  <div className="flex items-center gap-4 py-2">
-                    <div className="flex-1 h-px bg-border" />
-                    <DiacriticOrnament className="text-accent" variant="dot" />
-                    <div className="flex-1 h-px bg-border" />
-                  </div>
 
                   {/* Submit Button */}
                   <Button 
@@ -171,22 +170,24 @@ const AskQuestion = () => {
                 </form>
               </CardContent>
             </Card>
+            </motion.div>
 
             {/* Info Notice */}
-            <div className="mt-8 bg-accent/10 border border-accent/30 rounded-lg p-6">
-              <div className="flex items-start gap-3">
-                <DiacriticOrnament className="text-primary flex-shrink-0 mt-1" variant="curl" />
-                <div>
-                  <p className="text-sm font-medium mb-2">Please Note:</p>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• This is for general legal guidance only</li>
-                    <li>• For detailed advice, please book a consultation</li>
-                    <li>• All information shared is kept confidential</li>
-                    <li>• Response time: 24-48 hours</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-8 bg-secondary/30 border border-border rounded-lg p-6"
+            >
+              <p className="text-sm font-medium mb-2 text-foreground">Please Note:</p>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• This is for general legal guidance only</li>
+                <li>• For detailed advice, please book a consultation</li>
+                <li>• All information shared is kept confidential</li>
+                <li>• Response time: 24-48 hours</li>
+              </ul>
+            </motion.div>
           </div>
         </div>
       </main>

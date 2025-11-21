@@ -120,7 +120,13 @@ const PracticeAreas = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                  <Link to="/book-consultation">Book a Consultation</Link>
+                  <a 
+                    href="https://wa.me/918147240545?text=Hello%2C%20I%20would%20like%20to%20book%20a%20legal%20consultation%20with%20you.%20Could%20you%20please%20provide%20me%20with%20available%20time%20slots%3F"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Book a Consultation
+                  </a>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link to="/ask-question">Ask a Free Question</Link>
