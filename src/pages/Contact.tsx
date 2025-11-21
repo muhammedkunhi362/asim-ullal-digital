@@ -1,6 +1,6 @@
+import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import DiacriticOrnament from "@/components/DiacriticOrnament";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock, Linkedin, Instagram, Facebook, Twitter } from "lucide-react";
@@ -43,29 +43,35 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
 
-      <main className="flex-1 scholarly-bg py-16">
+      <main className="flex-1 bg-background py-20">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-5xl mx-auto">
             {/* Page Title */}
-            <div className="text-center mb-12">
-              <DiacriticOrnament className="text-primary w-8 h-8 mx-auto mb-4" variant="accent" />
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-primary mb-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
                 Get in Touch
               </h1>
               <p className="text-lg text-muted-foreground">
                 We're here to help. Reach out for legal consultation or any inquiries.
               </p>
-              <div className="flex items-center justify-center gap-3 mt-6">
-                <div className="h-px w-16 bg-accent" />
-                <DiacriticOrnament className="text-accent" variant="dot" />
-                <div className="h-px w-16 bg-accent" />
-              </div>
-            </div>
+            </motion.div>
 
             {/* Contact Cards Grid */}
             <div className="grid md:grid-cols-2 gap-6 mb-12">
               {contactDetails.map((detail, index) => (
-                <Card key={index} className="bg-background hover:shadow-lg transition-smooth">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Card className="bg-card hover:shadow-lg transition-smooth border-border/50">
                   <CardContent className="pt-6 pb-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -91,11 +97,18 @@ const Contact = () => {
                     </div>
                   </CardContent>
                 </Card>
+                </motion.div>
               ))}
             </div>
 
             {/* Map Placeholder */}
-            <Card className="bg-background mb-12 overflow-hidden">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="bg-card mb-12 overflow-hidden border-border/50">
               <CardContent className="p-0">
                 <div className="w-full h-80 bg-secondary flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/10" />
@@ -111,15 +124,21 @@ const Contact = () => {
                 </div>
               </CardContent>
             </Card>
+            </motion.div>
 
             {/* Social & CTA Section */}
-            <Card className="bg-background border-2 border-accent/30">
-              <CardContent className="pt-8 pb-8">
-                <div className="text-center mb-8">
-                  <DiacriticOrnament className="text-primary w-6 h-6 mx-auto mb-4" variant="curl" />
-                  <h3 className="text-2xl font-serif font-bold mb-3">
-                    Connect With Us
-                  </h3>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <Card className="bg-card border-border/50">
+                <CardContent className="pt-8 pb-8">
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-bold mb-3 text-foreground">
+                      Connect With Us
+                    </h3>
                   <p className="text-muted-foreground mb-6">
                     Follow us on social media for legal insights and updates
                   </p>
@@ -141,23 +160,28 @@ const Contact = () => {
                   {/* CTA Buttons */}
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
-                      <Link to="/book-consultation">Book Appointment</Link>
+                      <a 
+                        href="https://wa.me/918147240545?text=Hello%2C%20I%20would%20like%20to%20book%20a%20legal%20consultation%20with%20you.%20Could%20you%20please%20provide%20me%20with%20available%20time%20slots%3F"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Book Appointment
+                      </a>
                     </Button>
-                    <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
+                    <Button asChild size="lg" variant="outline">
                       <a href="tel:+918147240545">Call Now</a>
                     </Button>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-center gap-4">
-                    <DiacriticOrnament className="text-accent/50" variant="dot" />
+                  <div className="mt-6">
                     <p className="text-sm text-muted-foreground italic">
                       We're here to serve you with clarity and confidence
                     </p>
-                    <DiacriticOrnament className="text-accent/50" variant="dot" />
                   </div>
                 </div>
               </CardContent>
             </Card>
+            </motion.div>
           </div>
         </div>
       </main>
