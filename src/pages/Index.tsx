@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import CurvedRibbon from "@/components/CurvedRibbon";
 import DiacriticOrnament from "@/components/DiacriticOrnament";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Scale, Briefcase, FileText, Users, Shield, Building } from "lucide-react";
 import advocateProfile from "@/assets/advocate-profile.jpg";
 import { motion, AnimatePresence } from "framer-motion";
@@ -256,6 +257,9 @@ const Index = () => {
 
         <Footer />
       </div>
+      
+      {/* Floating WhatsApp Button */}
+      <WhatsAppFloat />
     </div>
   );
 };
