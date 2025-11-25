@@ -162,41 +162,67 @@ const Index = () => {
                   onClick={() => setSelectedPractice(index)}
                   className={`group cursor-pointer ${
                     index === selectedPractice 
-                      ? 'text-primary-foreground rounded-2xl p-8 mb-6' 
-                      : 'py-8 border-b border-border hover:bg-secondary/30'
+                      ? 'text-primary-foreground rounded-2xl p-4 sm:p-6 md:p-8 mb-6' 
+                      : 'py-4 sm:py-6 md:py-8 border-b border-border hover:bg-secondary/30'
                   }`}
                 >
-                  <div className="flex items-center gap-6 lg:gap-12">
-                    {/* Number */}
-                    <div className="flex-shrink-0 w-12">
-                      <span className={`text-2xl font-light ${index === selectedPractice ? 'text-primary-foreground' : 'text-foreground'}`}>
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4 md:gap-6 lg:gap-12">
+                    {/* Number and Title - Combined on mobile */}
+                    <div className="flex items-center gap-3 sm:gap-4 md:gap-6 w-full sm:w-auto">
+                      {/* Number */}
+                      <div className="flex-shrink-0 w-8 sm:w-10 md:w-12">
+                        <span className={`text-xl sm:text-2xl font-light ${index === selectedPractice ? 'text-primary-foreground' : 'text-foreground'}`}>
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                      </div>
 
-                    {/* Title */}
-                    <div className="flex-shrink-0 w-40 lg:w-56">
-                      <h3 className={`text-xl lg:text-2xl font-bold ${index === selectedPractice ? 'text-primary-foreground' : 'text-foreground'}`}>
-                        {item.label}
-                      </h3>
+                      {/* Title */}
+                      <div className="flex-1 sm:flex-shrink-0 sm:w-32 md:w-40 lg:w-56">
+                        <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold ${index === selectedPractice ? 'text-primary-foreground' : 'text-foreground'}`}>
+                          {item.label}
+                        </h3>
+                      </div>
+
+                      {/* Arrow Icon - Mobile */}
+                      <div className="flex-shrink-0 sm:hidden">
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                          index === selectedPractice 
+                            ? 'bg-background text-primary group-hover:scale-110' 
+                            : 'border border-border group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110'
+                        }`}>
+                          <svg 
+                            className="w-4 h-4" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                              strokeWidth={2} 
+                              d="M7 17L17 7M17 7H7M17 7v10" 
+                            />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
 
                     {/* Description */}
-                    <div className="flex-1">
-                      <p className={`text-sm lg:text-base ${index === selectedPractice ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
+                    <div className="flex-1 w-full sm:w-auto pl-11 sm:pl-0">
+                      <p className={`text-sm sm:text-sm lg:text-base ${index === selectedPractice ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
                         Expert legal counsel and representation in {item.label.toLowerCase()}, ensuring your rights are protected with professional guidance.
                       </p>
                     </div>
 
-                    {/* Arrow Icon */}
-                    <div className="flex-shrink-0">
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+                    {/* Arrow Icon - Desktop */}
+                    <div className="hidden sm:flex flex-shrink-0">
+                      <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
                         index === selectedPractice 
                           ? 'bg-background text-primary group-hover:scale-110' 
                           : 'border border-border group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110'
                       }`}>
                         <svg 
-                          className="w-5 h-5" 
+                          className="w-4 h-4 md:w-5 md:h-5" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
