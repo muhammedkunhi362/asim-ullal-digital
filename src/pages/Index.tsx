@@ -121,8 +121,8 @@ const Index = () => {
         </motion.section>
 
         {/* Practice Highlights */}
-        <section className="py-20 bg-secondary/30">
-          <div className="container mx-auto px-4 lg:px-8 max-w-4xl">
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -130,55 +130,75 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
-                Areas of Practice
+              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-2">
+                OUR PRACTICE AREAS
               </h2>
-              <div className="w-12 h-1 bg-primary mx-auto rounded-full"></div>
+              <p className="text-2xl lg:text-4xl italic text-muted-foreground mt-2">
+                SERVICES
+              </p>
             </motion.div>
 
-            {/* Vertical Timeline */}
-            <div className="relative">
-              {/* Center Timeline Line */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-border" />
+            <div className="space-y-0">
+              {highlights.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className={`group ${index === 0 ? 'bg-primary text-primary-foreground rounded-2xl p-8 mb-6' : 'py-8 border-b border-border'}`}
+                >
+                  <div className="flex items-center gap-6 lg:gap-12">
+                    {/* Number */}
+                    <div className="flex-shrink-0 w-12">
+                      <span className={`text-2xl font-light ${index === 0 ? 'text-primary-foreground' : 'text-foreground'}`}>
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                    </div>
 
-              <div className="space-y-8">
-                {highlights.map((item, index) => {
-                  const isLeft = index % 2 === 0;
-                  return (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: isLeft ? -20 : 20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="relative"
-                    >
-                      <div className={`flex items-center gap-6 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}>
-                        {/* Content */}
-                        <div className={`flex-1 ${isLeft ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                          <h3 className="text-base font-medium text-foreground hover:text-primary transition-colors duration-300">
-                            {item.label}
-                          </h3>
-                        </div>
+                    {/* Title */}
+                    <div className="flex-shrink-0 w-40 lg:w-56">
+                      <h3 className={`text-xl lg:text-2xl font-bold ${index === 0 ? 'text-primary-foreground' : 'text-foreground'}`}>
+                        {item.label}
+                      </h3>
+                    </div>
 
-                        {/* Timeline Node */}
-                        <div className="relative z-10 flex-shrink-0">
-                          <div className="w-12 h-12 rounded-full bg-primary/5 border-2 border-primary flex items-center justify-center hover:bg-primary hover:scale-110 transition-all duration-300 group">
-                            <item.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground transition-colors" />
-                          </div>
-                        </div>
+                    {/* Description */}
+                    <div className="flex-1">
+                      <p className={`text-sm lg:text-base ${index === 0 ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
+                        Expert legal counsel and representation in {item.label.toLowerCase()}, ensuring your rights are protected with professional guidance.
+                      </p>
+                    </div>
 
-                        {/* Empty space for balance */}
-                        <div className="flex-1" />
+                    {/* Arrow Icon */}
+                    <div className="flex-shrink-0">
+                      <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+                        index === 0 
+                          ? 'bg-background text-primary group-hover:scale-110' 
+                          : 'border border-border group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110'
+                      }`}>
+                        <svg 
+                          className="w-5 h-5" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={2} 
+                            d="M7 17L17 7M17 7H7M17 7v10" 
+                          />
+                        </svg>
                       </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
 
             <div className="text-center mt-12">
-              <Button asChild variant="outline" className="border-border hover:bg-secondary">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
                 <Link to="/practice-areas">View All Practice Areas</Link>
               </Button>
             </div>
