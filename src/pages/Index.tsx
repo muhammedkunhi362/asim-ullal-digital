@@ -38,6 +38,7 @@ const Index = () => {
   ];
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [selectedPractice, setSelectedPractice] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -146,26 +147,31 @@ const Index = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`group ${index === 0 ? 'bg-primary text-primary-foreground rounded-2xl p-8 mb-6' : 'py-8 border-b border-border'}`}
+                  onClick={() => setSelectedPractice(index)}
+                  className={`group cursor-pointer transition-all duration-300 ${
+                    index === selectedPractice 
+                      ? 'bg-primary text-primary-foreground rounded-2xl p-8 mb-6' 
+                      : 'py-8 border-b border-border hover:bg-secondary/30'
+                  }`}
                 >
                   <div className="flex items-center gap-6 lg:gap-12">
                     {/* Number */}
                     <div className="flex-shrink-0 w-12">
-                      <span className={`text-2xl font-light ${index === 0 ? 'text-primary-foreground' : 'text-foreground'}`}>
+                      <span className={`text-2xl font-light ${index === selectedPractice ? 'text-primary-foreground' : 'text-foreground'}`}>
                         {String(index + 1).padStart(2, '0')}
                       </span>
                     </div>
 
                     {/* Title */}
                     <div className="flex-shrink-0 w-40 lg:w-56">
-                      <h3 className={`text-xl lg:text-2xl font-bold ${index === 0 ? 'text-primary-foreground' : 'text-foreground'}`}>
+                      <h3 className={`text-xl lg:text-2xl font-bold ${index === selectedPractice ? 'text-primary-foreground' : 'text-foreground'}`}>
                         {item.label}
                       </h3>
                     </div>
 
                     {/* Description */}
                     <div className="flex-1">
-                      <p className={`text-sm lg:text-base ${index === 0 ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
+                      <p className={`text-sm lg:text-base ${index === selectedPractice ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
                         Expert legal counsel and representation in {item.label.toLowerCase()}, ensuring your rights are protected with professional guidance.
                       </p>
                     </div>
@@ -173,7 +179,7 @@ const Index = () => {
                     {/* Arrow Icon */}
                     <div className="flex-shrink-0">
                       <div className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-                        index === 0 
+                        index === selectedPractice 
                           ? 'bg-background text-primary group-hover:scale-110' 
                           : 'border border-border group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110'
                       }`}>
