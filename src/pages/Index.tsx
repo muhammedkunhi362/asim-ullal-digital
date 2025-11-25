@@ -143,14 +143,26 @@ const Index = () => {
               {highlights.map((item, index) => (
                 <motion.div
                   key={index}
+                  layout
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  animate={{ 
+                    backgroundColor: index === selectedPractice ? 'hsl(var(--primary))' : 'transparent',
+                    scale: index === selectedPractice ? 1.02 : 1,
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: index * 0.1,
+                    layout: { duration: 0.4 },
+                    backgroundColor: { duration: 0.3 },
+                    scale: { duration: 0.3 }
+                  }}
                   viewport={{ once: true }}
                   onClick={() => setSelectedPractice(index)}
-                  className={`group cursor-pointer transition-all duration-300 ${
+                  className={`group cursor-pointer ${
                     index === selectedPractice 
-                      ? 'bg-primary text-primary-foreground rounded-2xl p-8 mb-6' 
+                      ? 'text-primary-foreground rounded-2xl p-8 mb-6' 
                       : 'py-8 border-b border-border hover:bg-secondary/30'
                   }`}
                 >
