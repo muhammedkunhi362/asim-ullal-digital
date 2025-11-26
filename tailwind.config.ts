@@ -52,6 +52,10 @@ export default {
           green: "hsl(var(--brand-green))",
           aqua: "hsl(var(--brand-aqua))",
         },
+        practice: {
+          accent: "hsl(var(--practice-accent))",
+          "accent-foreground": "hsl(var(--practice-accent-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

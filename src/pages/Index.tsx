@@ -122,7 +122,7 @@ const Index = () => {
         </motion.section>
 
         {/* Practice Highlights */}
-        <section className="py-20 bg-background">
+        <section className="py-20 bg-black">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -131,118 +131,65 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-2">
-                OUR PRACTICE AREAS
-              </h2>
-              <p className="text-2xl lg:text-4xl italic text-muted-foreground mt-2">
-                SERVICES
+              <p className="text-sm lg:text-base text-white/60 mb-3 tracking-wide">
+                Our Services
               </p>
+              <h2 className="text-3xl lg:text-5xl font-bold text-white mb-2">
+                Our Palette of Expertise
+              </h2>
             </motion.div>
 
-            <div className="space-y-0">
-              {highlights.map((item, index) => (
-                <motion.div
-                  key={index}
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  animate={{ 
-                    backgroundColor: index === selectedPractice ? 'hsl(var(--primary))' : 'transparent',
-                    scale: index === selectedPractice ? 1.02 : 1,
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ 
-                    duration: 0.4, 
-                    delay: index * 0.1,
-                    layout: { duration: 0.4 },
-                    backgroundColor: { duration: 0.3 },
-                    scale: { duration: 0.3 }
-                  }}
-                  viewport={{ once: true }}
-                  onClick={() => setSelectedPractice(index)}
-                  className={`group cursor-pointer ${
-                    index === selectedPractice 
-                      ? 'text-primary-foreground rounded-xl sm:rounded-2xl p-3 sm:p-6 md:p-8 mb-4 sm:mb-6' 
-                      : 'py-3 sm:py-6 md:py-8 border-b border-border hover:bg-secondary/30'
-                  }`}
-                >
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4 md:gap-6 lg:gap-12">
-                    {/* Number and Title - Combined on mobile */}
-                    <div className="flex items-center gap-2 sm:gap-4 md:gap-6 w-full sm:w-auto">
-                      {/* Number */}
-                      <div className="flex-shrink-0 w-6 sm:w-10 md:w-12">
-                        <span className={`text-base sm:text-2xl font-light ${index === selectedPractice ? 'text-primary-foreground' : 'text-foreground'}`}>
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <div className="flex-1 sm:flex-shrink-0 sm:w-32 md:w-40 lg:w-56">
-                        <h3 className={`text-sm sm:text-xl lg:text-2xl font-bold leading-tight ${index === selectedPractice ? 'text-primary-foreground' : 'text-foreground'}`}>
-                          {item.label}
-                        </h3>
-                      </div>
-
-                      {/* Arrow Icon - Mobile */}
-                      <div className="flex-shrink-0 sm:hidden">
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                          index === selectedPractice 
-                            ? 'bg-background text-primary' 
-                            : 'border border-border group-hover:bg-primary group-hover:text-primary-foreground'
-                        }`}>
-                          <svg 
-                            className="w-3.5 h-3.5" 
-                            fill="none" 
-                            stroke="currentColor" 
-                            viewBox="0 0 24 24"
-                          >
-                            <path 
-                              strokeLinecap="round" 
-                              strokeLinejoin="round" 
-                              strokeWidth={2} 
-                              d="M7 17L17 7M17 7H7M17 7v10" 
-                            />
-                          </svg>
-                        </div>
-                      </div>
+            {/* Card Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {highlights.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    onClick={() => setSelectedPractice(index)}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`group cursor-pointer rounded-3xl p-8 transition-all duration-300 ${
+                      index === selectedPractice 
+                        ? 'bg-practice-accent text-practice-accent-foreground' 
+                        : 'bg-white text-black hover:shadow-2xl'
+                    }`}
+                  >
+                    {/* Icon */}
+                    <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${
+                      index === selectedPractice 
+                        ? 'bg-black text-practice-accent' 
+                        : 'bg-black text-white group-hover:scale-110'
+                    }`}>
+                      <Icon className="w-6 h-6" />
                     </div>
+
+                    {/* Title */}
+                    <h3 className={`text-xl lg:text-2xl font-bold mb-4 ${
+                      index === selectedPractice ? 'text-practice-accent-foreground' : 'text-black'
+                    }`}>
+                      {item.label}
+                    </h3>
 
                     {/* Description */}
-                    <div className="flex-1 w-full sm:w-auto pl-8 sm:pl-0 pr-2 sm:pr-0">
-                      <p className={`text-xs sm:text-sm lg:text-base leading-relaxed ${index === selectedPractice ? 'text-primary-foreground/90' : 'text-muted-foreground'}`}>
-                        Expert legal counsel and representation in {item.label.toLowerCase()}, ensuring your rights are protected with professional guidance.
-                      </p>
-                    </div>
-
-                    {/* Arrow Icon - Desktop */}
-                    <div className="hidden sm:flex flex-shrink-0">
-                      <div className={`w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-                        index === selectedPractice 
-                          ? 'bg-background text-primary group-hover:scale-110' 
-                          : 'border border-border group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110'
-                      }`}>
-                        <svg 
-                          className="w-4 h-4 md:w-5 md:h-5" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth={2} 
-                            d="M7 17L17 7M17 7H7M17 7v10" 
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+                    <p className={`text-sm leading-relaxed ${
+                      index === selectedPractice 
+                        ? 'text-practice-accent-foreground/90' 
+                        : 'text-black/70'
+                    }`}>
+                      Expert legal counsel and representation in {item.label.toLowerCase()}, ensuring your rights are protected with professional guidance.
+                    </p>
+                  </motion.div>
+                );
+              })}
             </div>
 
             <div className="text-center mt-12">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+              <Button asChild size="lg" className="bg-practice-accent hover:bg-practice-accent/90 text-practice-accent-foreground">
                 <Link to="/practice-areas">View All Practice Areas</Link>
               </Button>
             </div>
