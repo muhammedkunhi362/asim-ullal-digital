@@ -46,6 +46,10 @@ All colors MUST be HSL.
     --brand-lime: 170 60% 25%;
     --brand-green: 170 60% 25%;
     --brand-aqua: 170 60% 25%;
+    
+    /* Practice Area Accent - Dark Green */
+    --practice-accent: 160 70% 35%;
+    --practice-accent-foreground: 0 0% 100%;
 
     /* Transition & Animation */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
