@@ -23,7 +23,7 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="py-20 bg-secondary/30">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div 
@@ -50,7 +50,7 @@ const FAQ = () => {
               >
                 <AccordionItem 
                   value={`item-${index}`}
-                  className="bg-card border-0 rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300 group"
+                  className="bg-background border border-border rounded-xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_8px_24px_rgba(0,0,0,0.08)] transition-all duration-300 group"
                 >
                   <AccordionTrigger className="text-left hover:no-underline px-6 py-5 hover:bg-primary/5 transition-colors">
                     <div className="flex items-start gap-4 flex-1 pr-4">
