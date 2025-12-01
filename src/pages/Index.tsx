@@ -48,7 +48,7 @@ const Index = () => {
   }, [testimonials.length]);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background">
       <Header />
 
       {/* Add padding-top to account for fixed header */}
@@ -73,7 +73,7 @@ const Index = () => {
                   <span className="text-primary">Delivered with Integrity</span>
                 </h1>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  Advocate Asim Ullal - Your trusted legal partner specializing in civil litigation, 
+                  <span className="text-primary font-semibold">Adv. Asim Ullal</span> - Your trusted legal partner specializing in civil litigation, 
                   business law, and comprehensive legal consulting services across Karnataka.
                 </p>
                 <div className="flex flex-wrap gap-4 mb-8">
@@ -107,7 +107,7 @@ const Index = () => {
                 <div className="relative">
                   {/* Decorative brush stroke background */}
                   <div className="absolute -inset-8 bg-primary/20 rounded-full blur-3xl"></div>
-                  <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-card shadow-card">
+                  <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-background shadow-card">
                     <img 
                       src={advocateProfile} 
                       alt="Adv. Asim Ullal - Advocate Profile" 
@@ -119,7 +119,7 @@ const Index = () => {
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
-                    className="absolute bottom-8 right-8 bg-card p-6 rounded-2xl shadow-card text-center"
+                    className="absolute bottom-8 right-8 bg-background p-6 rounded-2xl shadow-card text-center border border-border"
                   >
                     <div className="w-16 h-16 mx-auto mb-3 rounded-full border-2 border-primary flex items-center justify-center">
                       <Scale className="w-8 h-8 text-primary" />
@@ -135,7 +135,7 @@ const Index = () => {
         </motion.section>
 
         {/* What Do I Help Section */}
-        <section className="py-20 bg-card">
+        <section className="py-20 bg-background">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -254,7 +254,7 @@ const Index = () => {
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ y: -8, boxShadow: '0 8px 30px 0 rgb(0 0 0 / 0.15)' }}
-                    className="bg-card rounded-3xl p-8 shadow-card cursor-pointer"
+                    className="bg-background rounded-3xl p-8 shadow-card cursor-pointer border border-border"
                   >
                     <div className={`w-16 h-16 rounded-2xl ${colors[index].bg} ${colors[index].text} flex items-center justify-center mb-6`}>
                       <Icon className="w-8 h-8" />
@@ -326,7 +326,7 @@ const Index = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-card py-20">
+        <section className="bg-background py-20">
           <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
