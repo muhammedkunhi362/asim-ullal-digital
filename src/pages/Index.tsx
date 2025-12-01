@@ -24,16 +24,16 @@ const Index = () => {
 
   const testimonials = [
     {
-      quote: "Professional, reliable, and extremely clear in communication.",
-      author: "Client A",
+      quote: "Exceptional legal expertise with clear communication throughout the entire process. Highly recommended for business matters.",
+      author: "Corporate Client",
     },
     {
-      quote: "Resolved our business dispute quickly and effectively.",
+      quote: "Professional, knowledgeable, and achieved excellent results in our property dispute case.",
+      author: "Property Owner",
+    },
+    {
+      quote: "Provided comprehensive legal guidance that helped us navigate complex compliance requirements successfully.",
       author: "Startup Founder",
-    },
-    {
-      quote: "His guidance gave me clarity and confidence.",
-      author: "Individual Client",
     },
   ];
 
@@ -69,30 +69,30 @@ const Index = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
                 <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
-                  Hey There,<br />
-                  I'm <span className="text-primary">Asim Ullal</span>
+                  Legal Excellence,<br />
+                  <span className="text-primary">Delivered with Integrity</span>
                 </h1>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  I design beautifully simple legal solutions, and I love what I do. 
-                  Expert in civil law, business consulting, and tribunal matters.
+                  Advocate Asim Ullal - Your trusted legal partner specializing in civil litigation, 
+                  business law, and comprehensive legal consulting services across Karnataka.
                 </p>
                 <div className="flex flex-wrap gap-4 mb-8">
                   <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
-                    <Link to="/book-consultation">Book Consultation</Link>
+                    <Link to="/book-consultation">Schedule Consultation</Link>
                   </Button>
                   <Button asChild size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8">
-                    <Link to="/ask-question">Ask a Question</Link>
+                    <Link to="/ask-question">Free Legal Query</Link>
                   </Button>
                 </div>
                 {/* Stats */}
                 <div className="flex gap-8">
                   <div>
                     <div className="text-4xl font-bold text-foreground">10+</div>
-                    <div className="text-sm text-muted-foreground uppercase tracking-wide">Years Experience</div>
+                    <div className="text-sm text-muted-foreground uppercase tracking-wide">Years of Practice</div>
                   </div>
                   <div>
                     <div className="text-4xl font-bold text-foreground">500+</div>
-                    <div className="text-sm text-muted-foreground uppercase tracking-wide">Cases Handled</div>
+                    <div className="text-sm text-muted-foreground uppercase tracking-wide">Cases Successfully Resolved</div>
                   </div>
                 </div>
               </motion.div>
@@ -124,9 +124,9 @@ const Index = () => {
                     <div className="w-16 h-16 mx-auto mb-3 rounded-full border-2 border-primary flex items-center justify-center">
                       <Scale className="w-8 h-8 text-primary" />
                     </div>
-                    <div className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">Certified</div>
-                    <div className="text-xs text-muted-foreground">Professional</div>
-                    <div className="text-xs font-semibold text-foreground">Advocate</div>
+                    <div className="text-xs font-semibold text-foreground uppercase tracking-wide mb-1">Licensed</div>
+                    <div className="text-xs text-muted-foreground">Advocate</div>
+                    <div className="text-xs font-semibold text-foreground">Karnataka Bar</div>
                   </motion.div>
                 </div>
               </motion.div>
@@ -145,10 +145,11 @@ const Index = () => {
               className="text-center mb-16"
             >
               <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-4">
-                What do I help?
+                Comprehensive Legal Services
               </h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                I will help you with finding a solution and solve your problems. We use process design to create digital products. Besides that also help their business.
+                Providing expert legal counsel and strategic guidance across multiple practice areas. 
+                From litigation to business advisory, we deliver solutions tailored to your unique needs.
               </p>
             </motion.div>
 
@@ -165,8 +166,8 @@ const Index = () => {
                   <Scale className="w-8 h-8 text-primary-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Legal Services</h3>
-                  <p className="text-sm text-muted-foreground">Civil law, property disputes, and tribunal representation</p>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Litigation Services</h3>
+                  <p className="text-sm text-muted-foreground">Expert representation in civil courts, property disputes, and tribunal proceedings with proven track record.</p>
                 </div>
               </motion.div>
 
@@ -181,8 +182,8 @@ const Index = () => {
                   <Briefcase className="w-8 h-8 text-secondary-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Business Consulting</h3>
-                  <p className="text-sm text-muted-foreground">Strategic guidance for business growth and protection</p>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Business & Corporate Law</h3>
+                  <p className="text-sm text-muted-foreground">Strategic legal advisory for businesses, startups, compliance management, and corporate governance.</p>
                 </div>
               </motion.div>
 
@@ -197,8 +198,8 @@ const Index = () => {
                   <FileText className="w-8 h-8 text-accent-foreground" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">Contract Drafting</h3>
-                  <p className="text-sm text-muted-foreground">Professional legal documentation and agreements</p>
+                  <h3 className="text-xl font-bold text-foreground mb-2">Legal Documentation</h3>
+                  <p className="text-sm text-muted-foreground">Professional drafting and vetting of contracts, agreements, and all legal documentation requirements.</p>
                 </div>
               </motion.div>
             </div>
@@ -213,11 +214,11 @@ const Index = () => {
             >
               <div className="text-center">
                 <div className="text-5xl lg:text-6xl font-bold text-foreground mb-2">500+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wide">Cases Completed</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wide">Successful Cases</div>
               </div>
               <div className="text-center">
                 <div className="text-5xl lg:text-6xl font-bold text-foreground mb-2">300+</div>
-                <div className="text-sm text-muted-foreground uppercase tracking-wide">Happy Clients</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wide">Satisfied Clients</div>
               </div>
             </motion.div>
 
@@ -229,7 +230,7 @@ const Index = () => {
               className="mb-16"
             >
               <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-8">
-                Areas of Practice
+                Core Practice Areas
               </h2>
             </motion.div>
 
@@ -262,7 +263,7 @@ const Index = () => {
                       {item.label}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
-                      Expert legal counsel and representation ensuring your rights are protected with professional guidance.
+                      Specialized legal expertise ensuring your rights are protected through thorough analysis and strategic advocacy.
                     </p>
                   </motion.div>
                 );
@@ -277,7 +278,7 @@ const Index = () => {
               className="text-center mt-12"
             >
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
-                <Link to="/practice-areas">View All Practice Areas</Link>
+                <Link to="/practice-areas">Explore All Services</Link>
               </Button>
             </motion.div>
           </div>
@@ -294,10 +295,10 @@ const Index = () => {
               className="text-center mb-12"
             >
               <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                People talk about us
+                Client Testimonials
               </h2>
               <p className="text-lg text-muted-foreground">
-                I got a job that was in accordance with the salary and field of work. The process of submitting an application was quite easy.
+                Trusted by individuals and businesses for delivering exceptional legal outcomes with dedication and professionalism.
               </p>
             </motion.div>
 
@@ -314,8 +315,8 @@ const Index = () => {
                   <div className="w-20 h-20 rounded-full bg-primary/20 mx-auto mb-4 flex items-center justify-center">
                     <Users className="w-10 h-10 text-primary" />
                   </div>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                    {testimonial.quote}
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed italic">
+                    "{testimonial.quote}"
                   </p>
                   <p className="font-semibold text-foreground">{testimonial.author}</p>
                 </motion.div>
@@ -334,13 +335,13 @@ const Index = () => {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-6">
-                Let's make something<br />amazing <span className="text-primary">together</span>.
+                Ready to Discuss<br />Your Legal <span className="text-primary">Matters?</span>
               </h2>
               <p className="text-xl text-muted-foreground mb-8">
-                Start by <span className="text-accent font-semibold">saying hi</span>
+                Schedule a consultation <span className="text-accent font-semibold">today</span> and receive expert guidance tailored to your needs.
               </p>
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-10 text-lg">
-                <Link to="/contact">Get in Touch</Link>
+                <Link to="/contact">Contact Us Now</Link>
               </Button>
             </motion.div>
           </div>
