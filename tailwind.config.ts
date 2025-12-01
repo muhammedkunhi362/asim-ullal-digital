@@ -48,9 +48,9 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         brand: {
-          lime: "hsl(var(--brand-lime))",
-          green: "hsl(var(--brand-green))",
-          aqua: "hsl(var(--brand-aqua))",
+          teal: "hsl(var(--brand-teal))",
+          yellow: "hsl(var(--brand-yellow))",
+          coral: "hsl(var(--brand-coral))",
         },
         practice: {
           accent: "hsl(var(--practice-accent))",
@@ -69,7 +69,10 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        serif: ['Playfair Display', 'Georgia', 'serif'],
+      },
+      boxShadow: {
+        'card': '0 4px 20px 0 rgb(0 0 0 / 0.1)',
+        'card-hover': '0 8px 30px 0 rgb(0 0 0 / 0.15)',
       },
       borderRadius: {
         lg: "var(--radius)",
