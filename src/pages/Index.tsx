@@ -11,6 +11,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Scale, Briefcase, FileText, Users, Shield, Building } from "lucide-react";
 import advocateProfile from "@/assets/advocate-profile.jpg";
 import { motion, AnimatePresence } from "framer-motion";
+import NumberedSection from "@/components/NumberedSection";
 
 const Index = () => {
   const highlights = [
@@ -83,7 +84,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-4xl lg:text-5xl font-bold mb-3 text-foreground"
+                className="text-4xl lg:text-5xl font-serif font-bold mb-3 text-foreground"
               >
                 Adv. Asim Ullal
               </motion.h1>
@@ -91,7 +92,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-lg text-muted-foreground mb-2"
+                className="text-lg text-foreground/80 mb-2"
               >
                 Advocate | Legal & Business Consultant
               </motion.p>
@@ -99,7 +100,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-base text-muted-foreground mb-10"
+                className="text-base text-foreground/70 mb-10"
               >
                 Managing Director & Founder – iBizlaw
               </motion.p>
@@ -122,8 +123,29 @@ const Index = () => {
         </motion.section>
 
         {/* Practice Highlights */}
-        <section className="py-20 bg-black">
+        <section className="py-20 bg-card">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
+            {/* Services as Numbered Sections */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20">
+              <NumberedSection number="01" title="Legal Excellence">
+                <p className="mb-4">
+                  With years of experience in civil law, property disputes, and tribunal matters, we provide comprehensive legal solutions tailored to your specific needs. Our approach combines deep legal knowledge with practical business understanding.
+                </p>
+              </NumberedSection>
+
+              <NumberedSection number="02" title="Business Consulting">
+                <p className="mb-4">
+                  Navigate complex business challenges with confidence. From contract drafting to strategic consulting, we help businesses make informed decisions that protect their interests and drive growth.
+                </p>
+              </NumberedSection>
+
+              <NumberedSection number="03" title="Client-Centric Approach">
+                <p className="mb-4">
+                  Every case is unique, and so is our approach. We take time to understand your situation, provide clear guidance, and work tirelessly to achieve the best possible outcome for you.
+                </p>
+              </NumberedSection>
+            </div>
+
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -131,11 +153,8 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <p className="text-sm lg:text-base text-white/60 mb-3 tracking-wide">
-                Our Services
-              </p>
-              <h2 className="text-3xl lg:text-5xl font-bold text-white mb-2">
-                Our Palette of Expertise
+              <h2 className="text-3xl lg:text-5xl font-serif font-bold text-foreground mb-2">
+                Areas of Practice
               </h2>
             </motion.div>
 
@@ -155,32 +174,26 @@ const Index = () => {
                     whileTap={{ scale: 0.98 }}
                     className={`group cursor-pointer rounded-3xl p-8 transition-all duration-300 ${
                       index === selectedPractice 
-                        ? 'bg-practice-accent text-practice-accent-foreground' 
-                        : 'bg-white text-black hover:shadow-2xl'
+                        ? 'bg-practice-accent text-foreground' 
+                        : 'bg-secondary text-foreground hover:shadow-2xl'
                     }`}
                   >
                     {/* Icon */}
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center mb-6 transition-all duration-300 ${
                       index === selectedPractice 
-                        ? 'bg-black text-practice-accent' 
-                        : 'bg-black text-white group-hover:scale-110'
+                        ? 'bg-secondary text-practice-accent' 
+                        : 'bg-practice-accent text-secondary group-hover:scale-110'
                     }`}>
                       <Icon className="w-6 h-6" />
                     </div>
 
                     {/* Title */}
-                    <h3 className={`text-xl lg:text-2xl font-bold mb-4 ${
-                      index === selectedPractice ? 'text-practice-accent-foreground' : 'text-black'
-                    }`}>
+                    <h3 className={`text-xl lg:text-2xl font-serif font-bold mb-4 text-foreground`}>
                       {item.label}
                     </h3>
 
                     {/* Description */}
-                    <p className={`text-sm leading-relaxed ${
-                      index === selectedPractice 
-                        ? 'text-practice-accent-foreground/90' 
-                        : 'text-black/70'
-                    }`}>
+                    <p className={`text-sm leading-relaxed text-foreground/80`}>
                       Expert legal counsel and representation in {item.label.toLowerCase()}, ensuring your rights are protected with professional guidance.
                     </p>
                   </motion.div>
@@ -189,7 +202,7 @@ const Index = () => {
             </div>
 
             <div className="text-center mt-12">
-              <Button asChild size="lg" className="bg-practice-accent hover:bg-practice-accent/90 text-practice-accent-foreground">
+              <Button asChild size="lg" className="bg-practice-accent hover:bg-practice-accent/90 text-foreground font-medium">
                 <Link to="/practice-areas">View All Practice Areas</Link>
               </Button>
             </div>
@@ -206,10 +219,10 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-12"
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
+              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-foreground mb-3">
                 Client Testimonials
               </h2>
-              <div className="w-12 h-1 bg-primary mx-auto rounded-full"></div>
+              <div className="w-12 h-1 bg-accent mx-auto rounded-full"></div>
             </motion.div>
 
             <div className="max-w-2xl mx-auto">
