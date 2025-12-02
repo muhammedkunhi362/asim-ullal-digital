@@ -1,20 +1,15 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
-import CurvedRibbon from "@/components/CurvedRibbon";
-import DiacriticOrnament from "@/components/DiacriticOrnament";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { Scale, Briefcase, FileText, Users, Shield, Building } from "lucide-react";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import advocateProfile from "@/assets/advocate-profile.jpg";
@@ -22,7 +17,7 @@ import { motion } from "framer-motion";
 
 const Index = () => {
   const autoplayPlugin = useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: false })
+    Autoplay({ delay: 2000, stopOnInteraction: false })
   );
   const highlights = [
     { icon: Scale, label: "Civil & Property Law" },
@@ -56,20 +51,21 @@ const Index = () => {
       <div className="pt-16">
         {/* Hero Section */}
         <motion.section 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="bg-background py-10 lg:py-16 relative overflow-hidden"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
               {/* Left Column - Text Content */}
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="text-center lg:text-left"
               >
-                <h1 className="text-5xl lg:text-7xl font-bold mb-6 text-foreground leading-tight">
+                <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-foreground leading-tight">
                   Legal Excellence,<br />
                   <span className="text-primary">Delivered with Integrity</span>
                 </h1>
@@ -77,24 +73,44 @@ const Index = () => {
                   <span className="text-primary font-semibold">Adv. Asim Ullal</span> - Your trusted legal partner specializing in civil litigation, 
                   business law, and comprehensive legal consulting services across Karnataka.
                 </p>
-                <div className="flex flex-wrap gap-4 mb-8">
-                  <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
-                    <Link to="/book-consultation">Schedule Consultation</Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8">
-                    <Link to="/ask-question">Free Legal Query</Link>
-                  </Button>
+                <div className="flex flex-wrap gap-4 mb-8 justify-center lg:justify-start">
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 transition-all duration-300">
+                      <Link to="/book-consultation">Schedule Consultation</Link>
+                    </Button>
+                  </motion.div>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Button asChild size="lg" variant="outline" className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8 transition-all duration-300">
+                      <Link to="/ask-question">Free Legal Query</Link>
+                    </Button>
+                  </motion.div>
                 </div>
                 {/* Stats */}
-                <div className="flex gap-8">
-                  <div>
+                <div className="flex gap-8 justify-center lg:justify-start">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                  >
                     <div className="text-4xl font-bold text-foreground">2+</div>
                     <div className="text-sm text-muted-foreground uppercase tracking-wide">Years of Practice</div>
-                  </div>
-                  <div>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.7 }}
+                  >
                     <div className="text-4xl font-bold text-foreground">100+</div>
                     <div className="text-sm text-muted-foreground uppercase tracking-wide">Cases Successfully Resolved</div>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -102,13 +118,17 @@ const Index = () => {
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
+                transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 className="relative flex justify-center"
               >
                 <div className="relative">
                   {/* Decorative brush stroke background */}
-                  <div className="absolute -inset-8 bg-primary/20 rounded-full blur-3xl"></div>
-                  <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-background shadow-card">
+                  <motion.div 
+                    className="absolute -inset-8 bg-primary/20 rounded-full blur-3xl"
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <div className="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-background shadow-card">
                     <img 
                       src={advocateProfile} 
                       alt="Adv. Asim Ullal - Advocate Profile" 
@@ -125,16 +145,16 @@ const Index = () => {
         <section className="py-10 bg-background">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="text-left mb-10"
+              className="text-center mb-10"
             >
               <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-3">
                 Comprehensive Legal Services
               </h2>
-              <p className="text-base text-muted-foreground max-w-2xl">
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
                 Providing expert legal counsel and strategic guidance across multiple practice areas. 
                 From litigation to business advisory, we deliver solutions tailored to your unique needs.
               </p>
@@ -143,9 +163,9 @@ const Index = () => {
             {/* Services Grid */}
             <div className="grid md:grid-cols-3 gap-5 mb-10">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: true }}
                 className="flex items-start gap-4 service-icon-wrapper"
               >
@@ -159,9 +179,9 @@ const Index = () => {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
+                transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: true }}
                 className="flex items-start gap-4 service-icon-wrapper"
               >
@@ -175,9 +195,9 @@ const Index = () => {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
                 viewport={{ once: true }}
                 className="flex items-start gap-4 service-icon-wrapper"
               >
@@ -192,11 +212,11 @@ const Index = () => {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="mb-8"
+              className="text-center mb-8"
             >
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Core Practice Areas
@@ -218,12 +238,12 @@ const Index = () => {
                 return (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
                     viewport={{ once: true }}
-                    whileHover={{ y: -4, boxShadow: '0 8px 30px 0 rgb(0 0 0 / 0.15)' }}
-                    className="bg-background rounded-2xl p-5 shadow-card cursor-pointer border border-border"
+                    whileHover={{ y: -6, transition: { duration: 0.3 } }}
+                    className="bg-background rounded-2xl p-5 shadow-card cursor-pointer border border-border hover:shadow-lg transition-shadow duration-300"
                   >
                     <div className={`w-12 h-12 rounded-xl ${colors[index].bg} ${colors[index].text} flex items-center justify-center mb-4`}>
                       <Icon className="w-6 h-6" />
@@ -242,13 +262,19 @@ const Index = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="text-left mt-8"
+              className="text-center mt-8"
             >
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
-                <Link to="/practice-areas">Explore All Services</Link>
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 transition-all duration-300">
+                  <Link to="/practice-areas">Explore All Services</Link>
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -257,11 +283,11 @@ const Index = () => {
         <section className="bg-background py-10">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="text-left mb-8"
+              className="text-center mb-8"
             >
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">
                 Client Testimonials
@@ -273,23 +299,23 @@ const Index = () => {
 
             <Carousel
               opts={{
-                align: "start",
+                align: "center",
                 loop: true,
               }}
               plugins={[autoplayPlugin.current]}
-              className="w-full max-w-4xl"
+              className="w-full max-w-4xl mx-auto"
             >
               <CarouselContent className="-ml-4">
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
                       viewport={{ once: true }}
-                      className="bg-card border border-border rounded-2xl p-5 h-full text-left shadow-card"
+                      className="bg-card border border-border rounded-2xl p-5 h-full text-center shadow-card"
                     >
-                      <div className="w-12 h-12 rounded-full bg-primary/20 mb-3 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-primary/20 mb-3 flex items-center justify-center mx-auto">
                         <Users className="w-6 h-6 text-primary" />
                       </div>
                       <p className="text-sm text-muted-foreground mb-3 leading-relaxed italic">
@@ -300,10 +326,6 @@ const Index = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="flex gap-3 mt-6">
-                <CarouselPrevious className="static translate-y-0 bg-primary text-primary-foreground hover:bg-primary/90 border-none h-8 w-8" />
-                <CarouselNext className="static translate-y-0 bg-primary text-primary-foreground hover:bg-primary/90 border-none h-8 w-8" />
-              </div>
             </Carousel>
           </div>
         </section>
@@ -312,11 +334,11 @@ const Index = () => {
         <section className="bg-background py-10">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="text-left"
+              className="text-center"
             >
               <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4">
                 Ready to Discuss Your Legal <span className="text-primary">Matters?</span>
@@ -324,9 +346,15 @@ const Index = () => {
               <p className="text-lg text-muted-foreground mb-6">
                 Schedule a consultation <span className="text-accent font-semibold">today</span> and receive expert guidance tailored to your needs.
               </p>
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
-                <Link to="/contact">Contact Us Now</Link>
-              </Button>
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 transition-all duration-300">
+                  <Link to="/contact">Contact Us Now</Link>
+                </Button>
+              </motion.div>
             </motion.div>
           </div>
         </section>
