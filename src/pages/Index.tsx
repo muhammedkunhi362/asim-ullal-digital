@@ -217,7 +217,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="text-center mb-8"
+              className="text-center mb-8 mt-12"
             >
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 inline-block relative pb-3">
                 Core Practice Areas
