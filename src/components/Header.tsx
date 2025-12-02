@@ -44,15 +44,21 @@ const Header = () => {
           key={item.to}
           initial={mobile ? { opacity: 0, x: -20 } : false}
           animate={mobile ? { opacity: 1, x: 0 } : false}
-          transition={{ duration: 0.3, delay: index * 0.05 }}
+          transition={{ duration: 0.2, delay: index * 0.03 }}
         >
           <NavLink
             to={item.to}
-            className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors px-4 py-2 rounded-lg hover:bg-primary/5 relative group"
-            activeClassName="text-primary font-semibold bg-primary/5"
+            className={mobile 
+              ? "block text-base font-medium text-foreground hover:text-primary transition-colors py-2 px-3 rounded-lg hover:bg-primary/10"
+              : "text-sm font-medium text-foreground/70 hover:text-primary transition-colors px-4 py-2 rounded-lg hover:bg-primary/5 relative group"
+            }
+            activeClassName={mobile 
+              ? "text-primary font-semibold bg-primary/10"
+              : "text-primary font-semibold bg-primary/5"
+            }
           >
             {item.label}
-            <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+            {!mobile && <span className="absolute bottom-0 left-4 right-4 h-0.5 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>}
           </NavLink>
         </motion.div>
       ))}
@@ -96,11 +102,11 @@ const Header = () => {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-64 p-4">
-              <div className="flex items-center mb-4">
+            <SheetContent side="right" className="w-56 p-3 pt-4">
+              <div className="flex items-center mb-3 pb-2 border-b border-border">
                 <Logo className="text-primary" />
               </div>
-              <nav className="flex flex-col gap-1">
+              <nav className="flex flex-col gap-0">
                 <NavLinks mobile />
               </nav>
             </SheetContent>
