@@ -151,9 +151,9 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-10"
             >
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-3 inline-block relative">
+              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-3 inline-block relative pb-3">
                 Comprehensive Legal Services
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-primary rounded-full"></span>
               </h2>
               <p className="text-base text-muted-foreground max-w-2xl mx-auto mt-6">
                 Providing expert legal counsel and strategic guidance across multiple practice areas. 
@@ -219,9 +219,9 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-8"
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 inline-block relative">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 inline-block relative pb-3">
                 Core Practice Areas
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-primary rounded-full"></span>
               </h2>
             </motion.div>
 
@@ -291,9 +291,9 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-8"
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-2 inline-block relative">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-2 inline-block relative pb-3">
                 Client Testimonials
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-primary rounded-full"></span>
               </h2>
               <p className="text-base text-muted-foreground mt-6">
                 Trusted by individuals and businesses for delivering exceptional legal outcomes with dedication and professionalism.
@@ -343,9 +343,9 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center"
             >
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 inline-block relative">
+              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 inline-block relative pb-3">
                 Ready to Discuss Your Legal <span className="text-primary">Matters?</span>
-                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-primary rounded-full"></span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6 mt-6">
                 Schedule a consultation <span className="text-accent font-semibold">today</span> and receive expert guidance tailored to your needs.
