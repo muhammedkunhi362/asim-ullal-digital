@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Header from "@/components/Header";
@@ -15,10 +16,14 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 import advocateProfile from "@/assets/advocate-profile.jpg";
 import { motion } from "framer-motion";
 
 const Index = () => {
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false })
+  );
   const highlights = [
     { icon: Scale, label: "Civil & Property Law" },
     { icon: Briefcase, label: "Business Consulting" },
@@ -54,7 +59,7 @@ const Index = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-background py-16 lg:py-24 relative overflow-hidden"
+          className="bg-background py-10 lg:py-16 relative overflow-hidden"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
@@ -117,26 +122,26 @@ const Index = () => {
         </motion.section>
 
         {/* What Do I Help Section */}
-        <section className="py-20 bg-background">
+        <section className="py-10 bg-background">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center mb-16"
+              className="text-left mb-10"
             >
-              <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-3">
                 Comprehensive Legal Services
               </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base text-muted-foreground max-w-2xl">
                 Providing expert legal counsel and strategic guidance across multiple practice areas. 
                 From litigation to business advisory, we deliver solutions tailored to your unique needs.
               </p>
             </motion.div>
 
             {/* Services Grid */}
-            <div className="grid md:grid-cols-3 gap-6 mb-20">
+            <div className="grid md:grid-cols-3 gap-5 mb-10">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -191,15 +196,15 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="mb-16"
+              className="mb-8"
             >
-              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-8">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
                 Core Practice Areas
               </h2>
             </motion.div>
 
             {/* Practice Areas Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {highlights.map((item, index) => {
                 const Icon = item.icon;
                 const colors = [
@@ -217,13 +222,13 @@ const Index = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    whileHover={{ y: -8, boxShadow: '0 8px 30px 0 rgb(0 0 0 / 0.15)' }}
-                    className="bg-background rounded-3xl p-8 shadow-card cursor-pointer border border-border"
+                    whileHover={{ y: -4, boxShadow: '0 8px 30px 0 rgb(0 0 0 / 0.15)' }}
+                    className="bg-background rounded-2xl p-5 shadow-card cursor-pointer border border-border"
                   >
-                    <div className={`w-16 h-16 rounded-2xl ${colors[index].bg} ${colors[index].text} flex items-center justify-center mb-6`}>
-                      <Icon className="w-8 h-8" />
+                    <div className={`w-12 h-12 rounded-xl ${colors[index].bg} ${colors[index].text} flex items-center justify-center mb-4`}>
+                      <Icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-xl font-bold text-foreground mb-3">
+                    <h3 className="text-lg font-bold text-foreground mb-2">
                       {item.label}
                     </h3>
                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -239,7 +244,7 @@ const Index = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center mt-12"
+              className="text-left mt-8"
             >
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
                 <Link to="/practice-areas">Explore All Services</Link>
@@ -249,19 +254,19 @@ const Index = () => {
         </section>
 
         {/* Testimonials */}
-        <section className="bg-background py-20">
+        <section className="bg-background py-10">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-left mb-8"
             >
-              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">
                 Client Testimonials
               </h2>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-base text-muted-foreground">
                 Trusted by individuals and businesses for delivering exceptional legal outcomes with dedication and professionalism.
               </p>
             </motion.div>
@@ -271,7 +276,8 @@ const Index = () => {
                 align: "start",
                 loop: true,
               }}
-              className="w-full max-w-4xl mx-auto"
+              plugins={[autoplayPlugin.current]}
+              className="w-full max-w-4xl"
             >
               <CarouselContent className="-ml-4">
                 {testimonials.map((testimonial, index) => (
@@ -281,43 +287,44 @@ const Index = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       viewport={{ once: true }}
-                      className="bg-card border border-border rounded-2xl p-6 h-full text-center shadow-card"
+                      className="bg-card border border-border rounded-2xl p-5 h-full text-left shadow-card"
                     >
-                      <div className="w-16 h-16 rounded-full bg-primary/20 mx-auto mb-4 flex items-center justify-center">
-                        <Users className="w-8 h-8 text-primary" />
+                      <div className="w-12 h-12 rounded-full bg-primary/20 mb-3 flex items-center justify-center">
+                        <Users className="w-6 h-6 text-primary" />
                       </div>
-                      <p className="text-sm text-muted-foreground mb-4 leading-relaxed italic">
+                      <p className="text-sm text-muted-foreground mb-3 leading-relaxed italic">
                         "{testimonial.quote}"
                       </p>
-                      <p className="font-semibold text-foreground">{testimonial.author}</p>
+                      <p className="font-semibold text-foreground text-sm">{testimonial.author}</p>
                     </motion.div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <div className="flex justify-center gap-4 mt-8">
-                <CarouselPrevious className="static translate-y-0 bg-primary text-primary-foreground hover:bg-primary/90 border-none" />
-                <CarouselNext className="static translate-y-0 bg-primary text-primary-foreground hover:bg-primary/90 border-none" />
+              <div className="flex gap-3 mt-6">
+                <CarouselPrevious className="static translate-y-0 bg-primary text-primary-foreground hover:bg-primary/90 border-none h-8 w-8" />
+                <CarouselNext className="static translate-y-0 bg-primary text-primary-foreground hover:bg-primary/90 border-none h-8 w-8" />
               </div>
             </Carousel>
           </div>
         </section>
 
         {/* CTA Section */}
-        <section className="bg-background py-20">
-          <div className="container mx-auto px-4 lg:px-8 max-w-4xl text-center">
+        <section className="bg-background py-10">
+          <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
+              className="text-left"
             >
-              <h2 className="text-4xl lg:text-6xl font-bold text-foreground mb-6">
-                Ready to Discuss<br />Your Legal <span className="text-primary">Matters?</span>
+              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4">
+                Ready to Discuss Your Legal <span className="text-primary">Matters?</span>
               </h2>
-              <p className="text-xl text-muted-foreground mb-8">
+              <p className="text-lg text-muted-foreground mb-6">
                 Schedule a consultation <span className="text-accent font-semibold">today</span> and receive expert guidance tailored to your needs.
               </p>
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-10 text-lg">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
                 <Link to="/contact">Contact Us Now</Link>
               </Button>
             </motion.div>
