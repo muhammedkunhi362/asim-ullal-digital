@@ -63,7 +63,7 @@ const Index = () => {
                 initial={{ opacity: 0, x: -40 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                className="text-center lg:text-left"
+                className="text-left"
               >
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 text-foreground leading-tight">
                   Legal Excellence,<br />
@@ -73,7 +73,7 @@ const Index = () => {
                   <span className="text-primary font-semibold">Adv. Asim Ullal</span> - Your trusted legal partner specializing in civil litigation, 
                   business law, and comprehensive legal consulting services across Karnataka.
                 </p>
-                <div className="flex flex-wrap gap-4 mb-8 justify-center lg:justify-start">
+                <div className="flex flex-wrap gap-4 mb-8">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -94,7 +94,7 @@ const Index = () => {
                   </motion.div>
                 </div>
                 {/* Stats */}
-                <div className="flex gap-8 justify-center lg:justify-start">
+                <div className="flex gap-8">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
