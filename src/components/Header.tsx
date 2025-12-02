@@ -96,11 +96,11 @@ const Header = () => {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72">
-              <div className="flex items-center mb-8">
+            <SheetContent side="right" className="w-64 p-4">
+              <div className="flex items-center mb-4">
                 <Logo className="text-primary" />
               </div>
-              <nav className="flex flex-col gap-3">
+              <nav className="flex flex-col gap-1">
                 <NavLinks mobile />
               </nav>
             </SheetContent>
