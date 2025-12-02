@@ -70,7 +70,7 @@ const Index = () => {
                   <span className="text-primary">Delivered with Integrity</span>
                 </h1>
                 <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  <span className="text-primary font-semibold">Adv. Asim Ullal</span> - Your trusted legal partner specializing in civil litigation, 
+                  <span className="text-primary font-extrabold">Adv. Asim Ullal</span> - Your trusted legal partner specializing in civil litigation, 
                   business law, and comprehensive legal consulting services across Karnataka.
                 </p>
                 <div className="flex flex-wrap gap-4 mb-8">
@@ -142,7 +142,7 @@ const Index = () => {
         </motion.section>
 
         {/* What Do I Help Section */}
-        <section className="py-10 bg-background">
+        <section className="py-16 bg-background">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -151,10 +151,11 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-10"
             >
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-3">
+              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-3 inline-block relative">
                 Comprehensive Legal Services
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
               </h2>
-              <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base text-muted-foreground max-w-2xl mx-auto mt-6">
                 Providing expert legal counsel and strategic guidance across multiple practice areas. 
                 From litigation to business advisory, we deliver solutions tailored to your unique needs.
               </p>
@@ -218,8 +219,9 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-8"
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 inline-block relative">
                 Core Practice Areas
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
               </h2>
             </motion.div>
 
@@ -280,7 +282,7 @@ const Index = () => {
         </section>
 
         {/* Testimonials */}
-        <section className="bg-background py-10">
+        <section className="bg-background py-16">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -289,10 +291,11 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center mb-8"
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-2">
+              <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-2 inline-block relative">
                 Client Testimonials
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
               </h2>
-              <p className="text-base text-muted-foreground">
+              <p className="text-base text-muted-foreground mt-6">
                 Trusted by individuals and businesses for delivering exceptional legal outcomes with dedication and professionalism.
               </p>
             </motion.div>
@@ -331,7 +334,7 @@ const Index = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-background py-10">
+        <section className="bg-background py-16">
           <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -340,10 +343,11 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center"
             >
-              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4">
+              <h2 className="text-3xl lg:text-5xl font-bold text-foreground mb-4 inline-block relative">
                 Ready to Discuss Your Legal <span className="text-primary">Matters?</span>
+                <span className="absolute bottom-0 left-0 w-full h-1 bg-primary"></span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-lg text-muted-foreground mb-6 mt-6">
                 Schedule a consultation <span className="text-accent font-semibold">today</span> and receive expert guidance tailored to your needs.
               </p>
               <motion.div
