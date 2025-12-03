@@ -12,7 +12,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import advocateProfile from "@/assets/advocate-profile.jpg";
+import advocateProfile from "@/assets/advocate-profile1.jpg";
 import heroBackground from "@/assets/hero-background.jpg";
 import { motion } from "framer-motion";
 
