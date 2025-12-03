@@ -33,10 +33,10 @@ const Contact = () => {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn", color: "hover:text-blue-600" },
-    { icon: Instagram, href: "#", label: "Instagram", color: "hover:text-pink-600" },
-    { icon: Facebook, href: "#", label: "Facebook", color: "hover:text-blue-500" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "hover:text-blue-400" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/adv-asim-ullal-031b10341", label: "LinkedIn", color: "hover:text-blue-600" },
+    { icon: Instagram, href: "https://www.instagram.com/adv.asim_ullal", label: "Instagram", color: "hover:text-pink-600" },
+    { icon: Facebook, href: "https://www.facebook.com/share/1Apnn5XBGU/", label: "Facebook", color: "hover:text-blue-500" },
+    { icon: Twitter, href: "https://x.com/asim_ullal", label: "X", color: "hover:text-blue-400" },
   ];
 
   return (
@@ -149,6 +149,8 @@ const Contact = () => {
                       <a
                         key={social.label}
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label={social.label}
                         className={`w-12 h-12 rounded-full bg-primary/10 hover:bg-primary hover:text-primary-foreground flex items-center justify-center transition-smooth ${social.color}`}
                       >
