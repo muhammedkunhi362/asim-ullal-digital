@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
-import advocateProfile from "@/assets/advocate-profile3.jpg";
+import advocateProfile from "@/assets/advocate-profile1.jpg";
 
 const About = () => {
   return (
