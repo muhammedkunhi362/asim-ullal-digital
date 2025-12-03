@@ -183,7 +183,7 @@ const Index = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-foreground mb-2">Litigation Services</h3>
-                  <p className="text-sm text-muted-foreground">Expert representation in civil courts, property disputes, and tribunal proceedings with proven track record.</p>
+                  <p className="text-sm text-muted-foreground">Expert representation in high court, civil courts, property disputes, and tribunal proceedings with proven track record.</p>
                 </div>
               </motion.div>
 
