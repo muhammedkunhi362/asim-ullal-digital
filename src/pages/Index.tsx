@@ -212,12 +212,18 @@ const Index = () => {
               </motion.div>
             </div>
 
+          </div>
+        </section>
+
+        {/* Core Practice Areas Section */}
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4 lg:px-8 max-w-6xl">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
               viewport={{ once: true }}
-              className="text-center mb-8 mt-12"
+              className="text-center mb-10"
             >
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4 inline-block relative pb-3">
                 Core Practice Areas
