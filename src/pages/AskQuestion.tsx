@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -7,8 +8,71 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useToast } from "@/hooks/use-toast";
+
+// Replace this with your actual Google Apps Script Web App URL
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwYE99HtVErMzSF3pqctPw-ckRoF7wa5dGtGwD9H8hzrEd_mCIY6VAXduhld_jVACXb/exec";
 
 const AskQuestion = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    whatsapp: "",
+    gender: "",
+    age: "",
+    areaOfLaw: "",
+    question: ""
+  });
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors", // Required for Google Apps Script
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // With no-cors mode, we can't read the response, but if no error is thrown, it succeeded
+      toast({
+        title: "Question Submitted Successfully!",
+        description: "We'll respond within 24-48 hours via email or WhatsApp.",
+      });
+
+      // Reset form
+      setFormData({
+        fullName: "",
+        email: "",
+        whatsapp: "",
+        gender: "",
+        age: "",
+        areaOfLaw: "",
+        question: ""
+      });
+
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Submission Failed",
+        description: "Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -43,7 +107,7 @@ const AskQuestion = () => {
             >
               <Card className="bg-card border-border/50">
                 <CardContent className="pt-8 pb-8">
-                <form className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Full Name */}
                   <div>
                     <Label htmlFor="fullName" className="font-medium">
@@ -53,6 +117,8 @@ const AskQuestion = () => {
                       id="fullName" 
                       placeholder="Enter your full name" 
                       className="mt-2"
+                      value={formData.fullName}
+                      onChange={(e) => handleInputChange("fullName", e.target.value)}
                       required
                     />
                   </div>
@@ -68,6 +134,8 @@ const AskQuestion = () => {
                         type="email"
                         placeholder="your@email.com" 
                         className="mt-2"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
                         required
                       />
                     </div>
@@ -80,6 +148,8 @@ const AskQuestion = () => {
                         type="tel"
                         placeholder="+91 XXXXX XXXXX" 
                         className="mt-2"
+                        value={formData.whatsapp}
+                        onChange={(e) => handleInputChange("whatsapp", e.target.value)}
                         required
                       />
                     </div>
@@ -91,7 +161,11 @@ const AskQuestion = () => {
                       <Label htmlFor="gender" className="font-medium">
                         Gender <span className="text-destructive">*</span>
                       </Label>
-                      <Select required>
+                      <Select 
+                        value={formData.gender}
+                        onValueChange={(value) => handleInputChange("gender", value)}
+                        required
+                      >
                         <SelectTrigger id="gender" className="mt-2">
                           <SelectValue placeholder="Select gender" />
                         </SelectTrigger>
@@ -113,6 +187,8 @@ const AskQuestion = () => {
                         className="mt-2"
                         min="18"
                         max="100"
+                        value={formData.age}
+                        onChange={(e) => handleInputChange("age", e.target.value)}
                         required
                       />
                     </div>
@@ -123,7 +199,11 @@ const AskQuestion = () => {
                     <Label htmlFor="areaOfLaw" className="font-medium">
                       Area of Law <span className="text-destructive">*</span>
                     </Label>
-                    <Select required>
+                    <Select 
+                      value={formData.areaOfLaw}
+                      onValueChange={(value) => handleInputChange("areaOfLaw", value)}
+                      required
+                    >
                       <SelectTrigger id="areaOfLaw" className="mt-2">
                         <SelectValue placeholder="Select area of law" />
                       </SelectTrigger>
@@ -147,6 +227,8 @@ const AskQuestion = () => {
                       id="question" 
                       placeholder="Please describe your legal question in detail..."
                       className="mt-2 min-h-[150px]"
+                      value={formData.question}
+                      onChange={(e) => handleInputChange("question", e.target.value)}
                       required
                     />
                     <p className="text-xs text-muted-foreground mt-2">
@@ -154,14 +236,14 @@ const AskQuestion = () => {
                     </p>
                   </div>
 
-
                   {/* Submit Button */}
                   <Button 
                     type="submit" 
                     size="lg" 
                     className="w-full bg-primary hover:bg-primary/90"
+                    disabled={isSubmitting}
                   >
-                    Submit Your Question
+                    {isSubmitting ? "Submitting..." : "Submit Your Question"}
                   </Button>
 
                   <p className="text-xs text-center text-muted-foreground">
