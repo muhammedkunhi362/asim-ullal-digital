@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import advocateProfile from "@/assets/advocate-profile.jpg";
+import heroBackground from "@/assets/hero-background.jpg";
 import { motion } from "framer-motion";
 
 const Index = () => {
@@ -54,9 +55,16 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="bg-background py-10 lg:py-16 relative overflow-hidden"
+          className="py-10 lg:py-16 relative overflow-hidden"
+          style={{
+            backgroundImage: `url(${heroBackground})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
         >
-          <div className="container mx-auto px-4 lg:px-8">
+          {/* Overlay for readability */}
+          <div className="absolute inset-0 bg-background/85" />
+          <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
               {/* Left Column - Text Content */}
               <motion.div
