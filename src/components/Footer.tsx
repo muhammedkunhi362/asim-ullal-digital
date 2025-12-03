@@ -12,10 +12,10 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/adv-asim-ullal-031b10341", label: "LinkedIn" },
+    { icon: Instagram, href: "https://www.instagram.com/adv.asim_ullal", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/share/1Apnn5XBGU/", label: "Facebook" },
+    { icon: Twitter, href: "https://x.com/asim_ullal", label: "X" },
   ];
 
   return (
@@ -74,6 +74,8 @@ const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="w-10 h-10 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground border border-primary-foreground/20 hover:border-primary-foreground text-primary-foreground hover:text-primary flex items-center justify-center transition-all duration-300 hover:scale-110"
                 >
