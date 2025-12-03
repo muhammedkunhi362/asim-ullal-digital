@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 
 const WhatsAppFloat = () => {
+  // URL encode the default message
+  const defaultMessage = encodeURIComponent("Mr. Asim Ullal, I came through your website, and need assistance");
+  
   return (
     <motion.a
-      href="https://api.whatsapp.com/send?phone=+918147240545"
+      href={`https://api.whatsapp.com/send?phone=918147240545&text=${defaultMessage}`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-primary hover:bg-primary/90 rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 group"
