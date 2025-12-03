@@ -4,60 +4,77 @@ const Logo = ({ className = "" }: { className?: string }) => {
       className={className} 
       width="40" 
       height="40" 
-      viewBox="0 0 40 40" 
+      viewBox="0 0 100 100" 
       fill="none" 
       xmlns="http://www.w3.org/2000/svg"
     >
-      {/* Scales of Justice Logo */}
+      {/* Scales of Justice Logo - matching reference design */}
       
-      {/* Top decorative flame/leaf */}
+      {/* Top decorative flame/leaf ornament */}
       <path 
-        d="M20 2 C20 2 18 5 18 7 C18 8.5 19 9.5 20 9.5 C21 9.5 22 8.5 22 7 C22 5 20 2 20 2Z" 
+        d="M50 4 C50 4 46 10 46 14 C46 17 48 19 50 19 C52 19 54 17 54 14 C54 10 50 4 50 4Z" 
         fill="currentColor"
       />
       
-      {/* Balance beam - curved */}
+      {/* Left curved arm */}
       <path 
-        d="M6 14 Q13 11 20 12 Q27 11 34 14" 
+        d="M50 19 Q35 22 22 32" 
         stroke="currentColor" 
-        strokeWidth="2" 
+        strokeWidth="3" 
         strokeLinecap="round"
         fill="none"
       />
       
-      {/* Central pillar from beam */}
-      <line x1="20" y1="9.5" x2="20" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      {/* Right curved arm */}
+      <path 
+        d="M50 19 Q65 22 78 32" 
+        stroke="currentColor" 
+        strokeWidth="3" 
+        strokeLinecap="round"
+        fill="none"
+      />
       
-      {/* Left chain */}
-      <line x1="8" y1="14" x2="8" y2="20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      {/* Decorative circles at arm ends */}
+      <circle cx="22" cy="32" r="3" fill="currentColor"/>
+      <circle cx="78" cy="32" r="3" fill="currentColor"/>
       
-      {/* Right chain */}
-      <line x1="32" y1="14" x2="32" y2="20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      {/* Small decorative circles on arms */}
+      <circle cx="36" cy="24" r="2" fill="currentColor"/>
+      <circle cx="64" cy="24" r="2" fill="currentColor"/>
+      
+      {/* Left chain/rope */}
+      <line x1="22" y1="35" x2="22" y2="42" stroke="currentColor" strokeWidth="2"/>
+      
+      {/* Right chain/rope */}
+      <line x1="78" y1="35" x2="78" y2="42" stroke="currentColor" strokeWidth="2"/>
       
       {/* Left scale pan - triangle */}
       <path 
-        d="M3 20 L8 20 L13 20 L8 28 Z" 
+        d="M10 44 L22 44 L34 44 L22 60 Z" 
         fill="currentColor"
       />
       
       {/* Right scale pan - triangle */}
       <path 
-        d="M27 20 L32 20 L37 20 L32 28 Z" 
+        d="M66 44 L78 44 L90 44 L78 60 Z" 
         fill="currentColor"
       />
       
       {/* Central pillar */}
-      <rect x="18.5" y="12" width="3" height="20" fill="currentColor" rx="1"/>
+      <rect x="47" y="19" width="6" height="58" fill="currentColor"/>
       
-      {/* Base */}
+      {/* Base platform */}
       <path 
-        d="M13 32 L20 32 L27 32 L25 36 L15 36 Z" 
+        d="M35 77 L65 77 L60 85 L40 85 Z" 
         fill="currentColor"
       />
       
-      {/* Shield bottom right */}
+      {/* Base bottom */}
+      <rect x="38" y="85" width="24" height="4" rx="1" fill="currentColor"/>
+      
+      {/* Shield at bottom right */}
       <path 
-        d="M30 30 L30 35 Q30 38 33 38 Q36 38 36 35 L36 30 Z" 
+        d="M72 70 L72 82 Q72 90 80 90 Q88 90 88 82 L88 70 L80 68 Z" 
         fill="currentColor"
       />
     </svg>
