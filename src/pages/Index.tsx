@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
+import BookingFormDialog from "@/components/BookingFormDialog";
 import { Scale, Briefcase, FileText, Users, Shield, Building } from "lucide-react";
 import {
   Carousel,
@@ -14,12 +15,18 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import advocateProfile from "@/assets/advocate-profile3.jpg";
 import heroBackground from "@/assets/hero-background.jpg";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const Index = () => {
   const autoplayPlugin = useRef(
     Autoplay({ delay: 2000, stopOnInteraction: false })
   );
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const highlights = [
     { icon: Scale, label: "Civil & Property Law" },
     { icon: Briefcase, label: "Business Consulting" },
@@ -52,16 +59,23 @@ const Index = () => {
       <div className="pt-16">
         {/* Hero Section */}
         <motion.section 
+          ref={heroRef}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="py-10 lg:py-16 relative overflow-hidden"
-          style={{
-            backgroundImage: `url(${heroBackground})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
         >
+          {/* Parallax Background */}
+          <motion.div 
+            className="absolute inset-0 -z-10"
+            style={{
+              backgroundImage: `url(${heroBackground})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              y: backgroundY,
+              scale: 1.1,
+            }}
+          />
           {/* Overlay for readability */}
           <div className="absolute inset-0 bg-background/85" />
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -87,9 +101,11 @@ const Index = () => {
                     whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 transition-all duration-300">
-                      <Link to="/book-consultation">Schedule Consultation</Link>
-                    </Button>
+                    <BookingFormDialog>
+                      <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 transition-all duration-300">
+                        Schedule Consultation
+                      </Button>
+                    </BookingFormDialog>
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
