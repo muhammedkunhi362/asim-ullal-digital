@@ -129,15 +129,9 @@ export default function BookConsultation() {
       // Submit to Google Sheets
       await submitToGoogleSheets(data);
       
-      // Create WhatsApp message
-      const message = `*New Appointment Request*%0A%0A*Name:* ${encodeURIComponent(data.fullName)}%0A*Mobile:* ${encodeURIComponent(data.mobile)}%0A*Email:* ${encodeURIComponent(data.email)}%0A*Date:* ${format(data.preferredDate, "PPP")}%0A*Time:* ${encodeURIComponent(data.preferredTime)}%0A*Case Type:* ${encodeURIComponent(data.caseType)}%0A*Urgency:* ${encodeURIComponent(data.urgencyLevel)}`;
-      
-      // Open WhatsApp
-      window.open(`https://wa.me/+918147240545?text=${message}`, "_blank");
-      
       toast({
-        title: "Booking Request Submitted!",
-        description: "Your details have been saved. Please send the WhatsApp message to complete your booking.",
+        title: "Booking Request Submitted Successfully!",
+        description: "We've received your consultation request. Our team will contact you shortly to confirm your appointment.",
       });
       
       form.reset();
@@ -413,7 +407,7 @@ export default function BookConsultation() {
                       {isSubmitting ? "Submitting..." : "Submit Booking Request"}
                     </Button>
                     <p className="text-sm text-muted-foreground text-center mt-4">
-                      After submission, you'll be redirected to WhatsApp to confirm your appointment.
+                      Your information will be securely saved and our team will contact you soon.
                     </p>
                   </div>
                 </form>
