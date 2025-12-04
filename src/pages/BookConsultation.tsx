@@ -33,6 +33,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Name must be at least 2 characters").max(100),
@@ -76,6 +77,7 @@ const urgencyLevels = [
 export default function BookConsultation() {
   const { toast } = useToast();
   const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -86,17 +88,68 @@ export default function BookConsultation() {
     },
   });
 
-  const onSubmit = (data: FormData) => {
-    const message = `*New Appointment Request*%0A%0A*Name:* ${encodeURIComponent(data.fullName)}%0A*Mobile:* ${encodeURIComponent(data.mobile)}%0A*Email:* ${encodeURIComponent(data.email)}%0A*Date:* ${format(data.preferredDate, "PPP")}%0A*Time:* ${encodeURIComponent(data.preferredTime)}%0A*Case Type:* ${encodeURIComponent(data.caseType)}%0A*Urgency:* ${encodeURIComponent(data.urgencyLevel)}`;
+  const submitToGoogleSheets = async (data: FormData) => {
+    // Replace this URL with your Google Apps Script web app URL
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz3TnigSvt1H7Uq7AzeyFfjWcnvaB-DQgmtzqmiDpJT8SlBbrkR6iZh58WayaUBw_U/exec";
     
-    window.open(`https://wa.me/+918147240545?text=${message}`, "_blank");
+    try {
+      const formattedData = {
+        timestamp: new Date().toISOString(),
+        fullName: data.fullName,
+        mobile: data.mobile,
+        email: data.email,
+        preferredDate: format(data.preferredDate, "PPP"),
+        preferredTime: data.preferredTime,
+        caseType: data.caseType,
+        urgencyLevel: data.urgencyLevel,
+      };
+
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formattedData),
+      });
+
+      // Note: With no-cors mode, we can't read the response
+      // We'll assume success if no error is thrown
+      return true;
+    } catch (error) {
+      console.error("Error submitting to Google Sheets:", error);
+      throw error;
+    }
+  };
+
+  const onSubmit = async (data: FormData) => {
+    setIsSubmitting(true);
     
-    toast({
-      title: "Redirecting to WhatsApp",
-      description: "Please send the pre-filled message to complete your booking request.",
-    });
-    
-    form.reset();
+    try {
+      // Submit to Google Sheets
+      await submitToGoogleSheets(data);
+      
+      // Create WhatsApp message
+      const message = `*New Appointment Request*%0A%0A*Name:* ${encodeURIComponent(data.fullName)}%0A*Mobile:* ${encodeURIComponent(data.mobile)}%0A*Email:* ${encodeURIComponent(data.email)}%0A*Date:* ${format(data.preferredDate, "PPP")}%0A*Time:* ${encodeURIComponent(data.preferredTime)}%0A*Case Type:* ${encodeURIComponent(data.caseType)}%0A*Urgency:* ${encodeURIComponent(data.urgencyLevel)}`;
+      
+      // Open WhatsApp
+      window.open(`https://wa.me/+918147240545?text=${message}`, "_blank");
+      
+      toast({
+        title: "Booking Request Submitted!",
+        description: "Your details have been saved. Please send the WhatsApp message to complete your booking.",
+      });
+      
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Submission Error",
+        description: "There was an issue saving your details. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -354,9 +407,10 @@ export default function BookConsultation() {
                     <Button 
                       type="submit" 
                       size="lg"
+                      disabled={isSubmitting}
                       className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full h-14 text-lg font-semibold"
                     >
-                      Submit Booking Request
+                      {isSubmitting ? "Submitting..." : "Submit Booking Request"}
                     </Button>
                     <p className="text-sm text-muted-foreground text-center mt-4">
                       After submission, you'll be redirected to WhatsApp to confirm your appointment.
