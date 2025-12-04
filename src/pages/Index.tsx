@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FAQ from "@/components/FAQ";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import BookingFormDialog from "@/components/BookingFormDialog";
 import { Scale, Briefcase, FileText, Users, Shield, Building } from "lucide-react";
 import {
   Carousel,
@@ -101,11 +100,9 @@ const Index = () => {
                     whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <BookingFormDialog>
-                      <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 transition-all duration-300">
-                        Schedule Consultation
-                      </Button>
-                    </BookingFormDialog>
+                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 transition-all duration-300">
+                      <Link to="/book-consultation">Schedule Consultation</Link>
+                    </Button>
                   </motion.div>
                   <motion.div
                     whileHover={{ scale: 1.02 }}
