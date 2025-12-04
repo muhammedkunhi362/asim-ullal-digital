@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NavLink } from "@/components/NavLink";
-import { Menu } from "lucide-react";
+import { Menu, Home, User, Scale, Calendar, HelpCircle, Building, Phone, X } from "lucide-react";
 import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./ui/sheet";
 import Logo from "@/components/Logo";
 import { motion } from "framer-motion";
 
@@ -27,19 +27,24 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { to: "/", label: "Home" },
-    { to: "/about", label: "About" },
-    { to: "/practice-areas", label: "Practice Areas" },
-    { to: "/book-consultation", label: "Book Consultation" },
-    { to: "/ask-question", label: "Ask a Question" },
-    { to: "/ibizlaw", label: "iBizlaw" },
-    { to: "/contact", label: "Contact" },
+  const mainNavItems = [
+    { to: "/", label: "Home", icon: Home },
+    { to: "/about", label: "About", icon: User },
+    { to: "/practice-areas", label: "Practice Areas", icon: Scale },
+    { to: "/ibizlaw", label: "iBizlaw", icon: Building },
   ];
+
+  const actionNavItems = [
+    { to: "/book-consultation", label: "Book Consultation", icon: Calendar },
+    { to: "/ask-question", label: "Ask a Question", icon: HelpCircle },
+    { to: "/contact", label: "Contact", icon: Phone },
+  ];
+
+  const allNavItems = [...mainNavItems, ...actionNavItems];
 
   const NavLinks = ({ mobile = false }: { mobile?: boolean }) => (
     <>
-      {navItems.map((item, index) => (
+      {allNavItems.map((item, index) => (
         <motion.div
           key={item.to}
           initial={mobile ? { opacity: 0, x: -20 } : false}
@@ -63,6 +68,25 @@ const Header = () => {
         </motion.div>
       ))}
     </>
+  );
+
+  const MobileNavItem = ({ item, index }: { item: typeof mainNavItems[0]; index: number }) => (
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+    >
+      <SheetClose asChild>
+        <NavLink
+          to={item.to}
+          className="flex items-center gap-3 py-3 px-3 rounded-xl text-foreground/80 hover:bg-muted hover:text-foreground transition-all duration-200"
+          activeClassName="bg-primary/10 text-primary font-medium"
+        >
+          <item.icon className="w-5 h-5" />
+          <span className="text-[15px]">{item.label}</span>
+        </NavLink>
+      </SheetClose>
+    </motion.div>
   );
 
   return (
@@ -102,13 +126,66 @@ const Header = () => {
                 <Menu className="h-5 w-5" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-56 p-3 pt-4">
-              <div className="flex items-center mb-3 pb-2 border-b border-border">
-                <Logo className="text-primary" />
+            <SheetContent 
+              side="right" 
+              className="w-72 p-0 border-l-0 bg-card shadow-2xl"
+            >
+              {/* Header with Logo and Close */}
+              <div className="flex items-center justify-between px-5 py-4 border-b border-border/30">
+                <Link to="/" className="flex items-center gap-2">
+                  <Logo className="text-primary" />
+                </Link>
+                <SheetClose asChild>
+                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full hover:bg-muted">
+                    <X className="h-4 w-4" />
+                  </Button>
+                </SheetClose>
               </div>
-              <nav className="flex flex-col gap-0">
-                <NavLinks mobile />
-              </nav>
+
+              {/* Navigation Sections */}
+              <div className="px-4 py-5 flex flex-col h-[calc(100%-80px)]">
+                {/* Main Navigation */}
+                <div className="mb-6">
+                  <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider px-3 mb-2">
+                    Navigation
+                  </p>
+                  <nav className="flex flex-col gap-1">
+                    {mainNavItems.map((item, index) => (
+                      <MobileNavItem key={item.to} item={item} index={index} />
+                    ))}
+                  </nav>
+                </div>
+
+                {/* Actions Navigation */}
+                <div>
+                  <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider px-3 mb-2">
+                    Quick Actions
+                  </p>
+                  <nav className="flex flex-col gap-1">
+                    {actionNavItems.map((item, index) => (
+                      <MobileNavItem key={item.to} item={item} index={mainNavItems.length + index} />
+                    ))}
+                  </nav>
+                </div>
+
+                {/* Footer Info */}
+                <div className="mt-auto pt-4 border-t border-border/30">
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.3 }}
+                    className="flex items-center gap-3 px-3 py-3 bg-muted/50 rounded-xl"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                      <Scale className="w-5 h-5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-foreground truncate">Adv. Asim Ullal</p>
+                      <p className="text-xs text-muted-foreground">Legal Consultant</p>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
             </SheetContent>
           </Sheet>
         </div>
