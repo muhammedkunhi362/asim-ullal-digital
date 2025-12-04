@@ -110,9 +110,9 @@ export default function BookingFormDialog({ children }: BookingFormDialogProps) 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
+      <DialogContent className="w-[95vw] max-w-[500px] max-h-[90vh] overflow-y-auto p-4 sm:p-6">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-foreground">
+          <DialogTitle className="text-xl sm:text-2xl font-bold text-foreground">
             Book an Appointment
           </DialogTitle>
         </DialogHeader>
@@ -135,7 +135,7 @@ export default function BookingFormDialog({ children }: BookingFormDialogProps) 
               )}
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <FormField
                 control={form.control}
                 name="mobile"
@@ -169,7 +169,7 @@ export default function BookingFormDialog({ children }: BookingFormDialogProps) 
               />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4">
               <FormField
                 control={form.control}
                 name="preferredDate"

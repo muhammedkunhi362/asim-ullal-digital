@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BookingFormDialog from "@/components/BookingFormDialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Phone, Video, Building } from "lucide-react";
@@ -100,19 +101,14 @@ const BookConsultation = () => {
                     Note: Consultation fees vary as per the type of service.
                   </p>
 
-                  <Button 
-                    size="lg" 
-                    className="bg-primary hover:bg-primary/90 text-lg px-8"
-                    asChild
-                  >
-                    <a 
-                      href="https://api.whatsapp.com/send?phone=+918147240545"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  <BookingFormDialog>
+                    <Button 
+                      size="lg" 
+                      className="bg-primary hover:bg-primary/90 text-lg px-8"
                     >
                       Book a Slot Now
-                    </a>
-                  </Button>
+                    </Button>
+                  </BookingFormDialog>
 
                   <div className="mt-8">
                     <p className="text-sm text-muted-foreground">
