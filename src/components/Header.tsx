@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { NavLink } from "@/components/NavLink";
-import { Menu, Home, User, Scale, Calendar, HelpCircle, Building, Phone, X } from "lucide-react";
+import { Menu, Home, User, Scale, Calendar, HelpCircle, Building, Phone } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "./ui/sheet";
 import Logo from "@/components/Logo";
@@ -130,16 +130,11 @@ const Header = () => {
               side="right" 
               className="w-72 p-0 border-l-0 bg-card shadow-2xl"
             >
-              {/* Header with Logo and Close */}
+              {/* Header with Logo Only - Close button is built into SheetContent */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-border/30">
                 <Link to="/" className="flex items-center gap-2">
                   <Logo className="text-primary" />
                 </Link>
-                <SheetClose asChild>
-                  <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full hover:bg-muted">
-                    <X className="h-4 w-4" />
-                  </Button>
-                </SheetClose>
               </div>
 
               {/* Navigation Sections */}
