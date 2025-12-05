@@ -72,18 +72,28 @@ const Header = () => {
 
   const MobileNavItem = ({ item, index }: { item: typeof mainNavItems[0]; index: number }) => (
     <motion.div
-      initial={{ opacity: 0, x: -20 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
+      initial={{ opacity: 0, x: -30, filter: "blur(4px)" }}
+      animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+      transition={{ 
+        duration: 0.4, 
+        delay: index * 0.08,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
     >
       <SheetClose asChild>
         <NavLink
           to={item.to}
-          className="flex items-center gap-3 py-3 px-3 rounded-xl text-foreground/80 hover:bg-muted hover:text-foreground transition-all duration-200"
-          activeClassName="bg-primary/10 text-primary font-medium"
+          className="group flex items-center gap-3 py-3.5 px-4 rounded-xl text-foreground/70 hover:bg-primary/8 hover:text-foreground transition-all duration-300 ease-out"
+          activeClassName="bg-primary/12 text-primary font-medium shadow-sm"
         >
-          <item.icon className="w-5 h-5" />
-          <span className="text-[15px]">{item.label}</span>
+          <motion.div
+            whileHover={{ scale: 1.15, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+          >
+            <item.icon className="w-5 h-5 transition-colors duration-300 group-hover:text-primary" />
+          </motion.div>
+          <span className="text-[15px] font-medium">{item.label}</span>
         </NavLink>
       </SheetClose>
     </motion.div>
@@ -128,22 +138,38 @@ const Header = () => {
             </SheetTrigger>
             <SheetContent 
               side="right" 
-              className="w-72 p-0 border-l-0 bg-card shadow-2xl"
+              className="w-72 p-0 border-l-0 bg-card shadow-2xl overflow-hidden [&>button]:transition-all [&>button]:duration-300 [&>button]:hover:rotate-90 [&>button]:hover:scale-110"
             >
               {/* Header with Logo Only - Close button is built into SheetContent */}
-              <div className="flex items-center justify-between px-5 py-4 border-b border-border/30">
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                className="flex items-center justify-between px-5 py-4 border-b border-border/30"
+              >
                 <Link to="/" className="flex items-center gap-2">
-                  <Logo className="text-primary" />
+                  <motion.div
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
+                    <Logo className="text-primary" />
+                  </motion.div>
                 </Link>
-              </div>
+              </motion.div>
 
               {/* Navigation Sections */}
               <div className="px-4 py-5 flex flex-col h-[calc(100%-80px)]">
                 {/* Main Navigation */}
                 <div className="mb-6">
-                  <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider px-3 mb-2">
+                  <motion.p 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                    className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider px-3 mb-3"
+                  >
                     Navigation
-                  </p>
+                  </motion.p>
                   <nav className="flex flex-col gap-1">
                     {mainNavItems.map((item, index) => (
                       <MobileNavItem key={item.to} item={item} index={index} />
@@ -153,9 +179,14 @@ const Header = () => {
 
                 {/* Actions Navigation */}
                 <div>
-                  <p className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider px-3 mb-2">
+                  <motion.p 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.25 }}
+                    className="text-[11px] font-semibold text-muted-foreground uppercase tracking-wider px-3 mb-3"
+                  >
                     Quick Actions
-                  </p>
+                  </motion.p>
                   <nav className="flex flex-col gap-1">
                     {actionNavItems.map((item, index) => (
                       <MobileNavItem key={item.to} item={item} index={mainNavItems.length + index} />
@@ -166,16 +197,25 @@ const Header = () => {
                 {/* Footer Info */}
                 <div className="mt-auto pt-4 border-t border-border/30">
                   <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.4, delay: 0.3 }}
-                    className="flex items-center gap-3 px-3 py-3 bg-muted/50 rounded-xl"
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ 
+                      duration: 0.5, 
+                      delay: 0.5,
+                      ease: [0.25, 0.46, 0.45, 0.94]
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    className="flex items-center gap-3 px-4 py-3.5 bg-gradient-to-r from-muted/60 to-muted/30 rounded-xl cursor-pointer transition-shadow duration-300 hover:shadow-md"
                   >
-                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                    <motion.div 
+                      className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center"
+                      whileHover={{ rotate: 360 }}
+                      transition={{ duration: 0.6, ease: "easeInOut" }}
+                    >
                       <Scale className="w-5 h-5 text-primary" />
-                    </div>
+                    </motion.div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground truncate">Adv. Asim Ullal</p>
+                      <p className="text-sm font-semibold text-foreground truncate">Adv. Asim Ullal</p>
                       <p className="text-xs text-muted-foreground">Legal Consultant</p>
                     </div>
                   </motion.div>
