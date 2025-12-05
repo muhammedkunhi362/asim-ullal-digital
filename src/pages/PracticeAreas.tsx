@@ -48,9 +48,9 @@ const PracticeAreas = () => {
           <div className="max-w-4xl mx-auto">
             {/* Page Title */}
             <motion.div 
-              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
               <h1 className="text-4xl lg:text-5xl font-serif font-bold text-foreground mb-4">
@@ -71,10 +71,10 @@ const PracticeAreas = () => {
                 {practices.map((practice, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: -50, filter: "blur(4px)" }}
-                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                    viewport={{ once: true, margin: "-80px" }}
-                    transition={{ duration: 0.7, delay: index * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                     className="relative flex gap-8 group"
                   >
                     {/* Timeline Icon */}
@@ -106,10 +106,10 @@ const PracticeAreas = () => {
 
             {/* CTA Section */}
             <motion.div
-              initial={{ opacity: 0, y: 50, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.6 }}
               className="mt-20 text-center bg-secondary/30 rounded-lg p-10 border border-border"
             >
               <h2 className="text-2xl font-serif font-bold mb-4">

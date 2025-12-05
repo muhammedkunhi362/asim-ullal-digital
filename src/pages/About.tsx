@@ -14,9 +14,9 @@ const About = () => {
           <div className="max-w-5xl mx-auto">
             {/* Page Title */}
             <motion.div 
-              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
               <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -29,19 +29,19 @@ const About = () => {
 
             {/* Two-Column Layout */}
             <motion.div
-              initial={{ opacity: 0, y: 50, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
               <Card className="overflow-hidden bg-card border-border/50">
                 <div className="grid md:grid-cols-2 gap-8 p-8 lg:p-12">
                   {/* Left: Profile Image */}
                   <motion.div 
-                    initial={{ opacity: 0, scale: 0.9, filter: "blur(4px)" }}
-                    whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
                     className="flex items-center justify-center"
                   >
                     <div className="w-full max-w-sm aspect-square rounded-lg overflow-hidden border border-border/50 shadow-lg">
@@ -55,10 +55,10 @@ const About = () => {
 
                   {/* Right: Biography */}
                   <motion.div 
-                    initial={{ opacity: 0, x: 40, filter: "blur(4px)" }}
-                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.7, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
                     className="flex flex-col justify-center space-y-6"
                   >
                     <p className="text-lg leading-relaxed text-foreground">

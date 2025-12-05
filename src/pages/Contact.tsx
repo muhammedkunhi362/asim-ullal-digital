@@ -48,9 +48,9 @@ const Contact = () => {
           <div className="max-w-5xl mx-auto">
             {/* Page Title */}
             <motion.div 
-              initial={{ opacity: 0, y: 40, filter: "blur(8px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
               <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -66,10 +66,10 @@ const Contact = () => {
               {contactDetails.map((detail, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30, filter: "blur(4px)" }}
-                  whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.12, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <Card className="bg-card hover:shadow-lg transition-smooth border-border/50">
                   <CardContent className="pt-6 pb-6">
@@ -103,10 +103,10 @@ const Contact = () => {
 
             {/* Map Placeholder */}
             <motion.div
-              initial={{ opacity: 0, y: 40, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.6 }}
             >
               <Card className="bg-card mb-12 overflow-hidden border-border/50">
               <CardContent className="p-0">
@@ -128,10 +128,10 @@ const Contact = () => {
 
             {/* Social & CTA Section */}
             <motion.div
-              initial={{ opacity: 0, y: 50, filter: "blur(6px)" }}
-              whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.6 }}
             >
               <Card className="bg-card border-border/50">
                 <CardContent className="pt-8 pb-8">
